@@ -12,8 +12,8 @@
   <body class="bg-gray-100">
    <!-- Barra de Información Superior -->
 <div class="bg-[#006D88] text-white">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col sm:flex-row justify-between py-3 space-y-2 sm:space-y-0">
+    <div class="container px-4 mx-auto">
+        <div class="flex flex-col justify-between py-3 space-y-2 sm:flex-row sm:space-y-0">
             <!-- Contenedor de email -->
             <div class="flex items-center justify-center sm:justify-start">
                 <i class="fas fa-envelope text-[#EFBB0C] mr-2"></i>
@@ -22,7 +22,7 @@
                     </span>
             </div>
             <!-- Contenedor de teléfonos -->
-            <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-end space-y-1 sm:space-y-0 sm:space-x-4">
+            <div class="flex flex-col items-center justify-center space-y-1 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-4">
                 <div class="flex items-center">
                     <i class="fas fa-phone-alt text-[#EFBB0C] mr-2"></i>
                     <span class="text-[#F7F7F7] text-sm sm:text-base">
@@ -41,15 +41,15 @@
 
 <!-- Barra de Navegación -->
 <nav class="bg-white shadow">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
+    <div class="container px-4 mx-auto">
+        <div class="flex items-center justify-between h-16">
             <!-- Logo -->
-            <a href="http://127.0.0.1:8000" class="flex-shrink-0 flex items-center">
-                <img src="images/logo/logo.png" alt="Logo de la Empresa" class="h-8 w-auto" onerror="this.onerror=null; this.src='http://127.0.0.1:8000/images/logo/placeholder.png'">
+            <a href="http://127.0.0.1:8000" class="flex items-center flex-shrink-0">
+                <img src="images/logo/logo.png" alt="Logo de la Empresa" class="w-auto h-8" onerror="this.onerror=null; this.src='http://127.0.0.1:8000/images/logo/placeholder.png'">
             </a>
 
             <!-- Enlaces Desktop -->
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="items-center hidden space-x-8 md:flex">
                 <a href="index.html" class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium">
                     Inicio
                 </a>
@@ -85,21 +85,21 @@
     <!-- Contenido Principal -->
     <div class="w-full">
       <div class="max-w-full mx-auto">
-        <div class="container mx-auto px-4 py-16">
-          <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+        <div class="container px-4 py-16 mx-auto">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-1">
             <!-- Formulario de Contacto -->
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="px-6 mx-auto max-w-7xl">
               <h2
-                class="text-4xl font-bold text-center text-gray-800 mb-12 hover:text-blue-600 transition-colors duration-300"
+                class="mb-12 text-4xl font-bold text-center text-gray-800 transition-colors duration-300 hover:text-blue-600"
               >
                 Contáctenos
               </h2>
-              <div class="grid md:grid-cols-3 gap-8 mb-12">
+              <div class="grid gap-8 mb-12 md:grid-cols-3">
                 <div
-                  class="relative overflow-hidden flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transform transition-all duration-300 ease-in-out scale-100"
+                  class="relative flex flex-col items-center p-6 overflow-hidden transition-all duration-300 ease-in-out transform scale-100 bg-white rounded-lg shadow-lg"
                 >
                   <div
-                    class="absolute inset-0 bg-blue-50 transition-opacity duration-300 opacity-0"
+                    class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-blue-50"
                   ></div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -111,22 +111,22 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-phone h-12 w-12 text-blue-600 mb-4 transform transition-transform duration-500"
+                    class="w-12 h-12 mb-4 text-blue-600 transition-transform duration-500 transform lucide lucide-phone"
                   >
                     <path
                       d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
                     ></path>
                   </svg>
-                  <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                  <h3 class="mb-4 text-xl font-semibold text-gray-800">
                     Teléfono
                   </h3>
                   <div class="space-y-2 text-center">
                     <div
-                      class="group relative flex items-center justify-center"
+                      class="relative flex items-center justify-center group"
                     >
                       <p class="text-gray-600">+51 936 804 211</p>
                       <button
-                        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="ml-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                         title="Copiar al portapapeles"
                       >
                         <svg
@@ -139,7 +139,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-copy h-4 w-4 text-blue-600 hover:text-blue-800"
+                          class="w-4 h-4 text-blue-600 lucide lucide-copy hover:text-blue-800"
                         >
                           <rect
                             width="14"
@@ -156,11 +156,11 @@
                       </button>
                     </div>
                     <div
-                      class="group relative flex items-center justify-center"
+                      class="relative flex items-center justify-center group"
                     >
                       <p class="text-gray-600">01-7540464</p>
                       <button
-                        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="ml-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                         title="Copiar al portapapeles"
                       >
                         <svg
@@ -173,7 +173,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-copy h-4 w-4 text-blue-600 hover:text-blue-800"
+                          class="w-4 h-4 text-blue-600 lucide lucide-copy hover:text-blue-800"
                         >
                           <rect
                             width="14"
@@ -192,10 +192,10 @@
                   </div>
                 </div>
                 <div
-                  class="relative overflow-hidden flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transform transition-all duration-300 ease-in-out scale-100"
+                  class="relative flex flex-col items-center p-6 overflow-hidden transition-all duration-300 ease-in-out transform scale-100 bg-white rounded-lg shadow-lg"
                 >
                   <div
-                    class="absolute inset-0 bg-blue-50 transition-opacity duration-300 opacity-0"
+                    class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-blue-50"
                   ></div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -207,21 +207,21 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-mail h-12 w-12 text-blue-600 mb-4 transform transition-transform duration-500"
+                    class="w-12 h-12 mb-4 text-blue-600 transition-transform duration-500 transform lucide lucide-mail"
                   >
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                  <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                  <h3 class="mb-4 text-xl font-semibold text-gray-800">
                     Email
                   </h3>
                   <div class="space-y-2 text-center">
                     <div
-                      class="group relative flex items-center justify-center"
+                      class="relative flex items-center justify-center group"
                     >
                       <p class="text-gray-600">transportes@gruposbc.com.pe</p>
                       <button
-                        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="ml-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                         title="Copiar al portapapeles"
                       >
                         <svg
@@ -234,7 +234,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-copy h-4 w-4 text-blue-600 hover:text-blue-800"
+                          class="w-4 h-4 text-blue-600 lucide lucide-copy hover:text-blue-800"
                         >
                           <rect
                             width="14"
@@ -253,10 +253,10 @@
                   </div>
                 </div>
                 <div
-                  class="relative overflow-hidden flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transform transition-all duration-300 ease-in-out scale-100"
+                  class="relative flex flex-col items-center p-6 overflow-hidden transition-all duration-300 ease-in-out transform scale-100 bg-white rounded-lg shadow-lg"
                 >
                   <div
-                    class="absolute inset-0 bg-blue-50 transition-opacity duration-300 opacity-0"
+                    class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-blue-50"
                   ></div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -268,19 +268,19 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-map-pin h-12 w-12 text-blue-600 mb-4 transform transition-transform duration-500"
+                    class="w-12 h-12 mb-4 text-blue-600 transition-transform duration-500 transform lucide lucide-map-pin"
                   >
                     <path
                       d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
                     ></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
-                  <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                  <h3 class="mb-4 text-xl font-semibold text-gray-800">
                     Dirección
                   </h3>
                   <div class="space-y-2 text-center">
                     <div
-                      class="group relative flex items-center justify-center"
+                      class="relative flex items-center justify-center group"
                     >
                       <p class="text-gray-600">
                         Oficina: av. elmer faucet Nro. 6000 prov. const. del
@@ -288,7 +288,7 @@
                         Oficina 210
                       </p>
                       <button
-                        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="ml-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                         title="Copiar al portapapeles"
                       >
                         <svg
@@ -301,7 +301,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-copy h-4 w-4 text-blue-600 hover:text-blue-800"
+                          class="w-4 h-4 text-blue-600 lucide lucide-copy hover:text-blue-800"
                         >
                           <rect
                             width="14"
@@ -318,11 +318,11 @@
                       </button>
                     </div>
                     <div
-                      class="group relative flex items-center justify-center"
+                      class="relative flex items-center justify-center group"
                     >
                       <p class="text-gray-600">Lima, Perú</p>
                       <button
-                        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="ml-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                         title="Copiar al portapapeles"
                       >
                         <svg
@@ -335,7 +335,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-copy h-4 w-4 text-blue-600 hover:text-blue-800"
+                          class="w-4 h-4 text-blue-600 lucide lucide-copy hover:text-blue-800"
                         >
                           <rect
                             width="14"
@@ -356,13 +356,13 @@
               </div>
               <div class="mt-12">
                 <h3
-                  class="text-2xl font-semibold text-gray-800 text-center mb-6"
+                  class="mb-6 text-2xl font-semibold text-center text-gray-800"
                 >
                   Nuestra Ubicación
                 </h3>
                 <div class="relative group">
                   <div
-                    class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-500 opacity-100 group-hover:shadow-2xl"
+                    class="overflow-hidden transition-all duration-500 transform rounded-lg shadow-lg opacity-100 group-hover:shadow-2xl"
                   >
                     <div class="relative">
                       <iframe
@@ -376,7 +376,7 @@
                         href="https://www.google.com/maps?ll=-11.997271,-77.129390&amp;z=16&amp;t=h&amp;hl=es&amp;gl=PE&amp;mapclient=embed&amp;q=Av.+Elmer+Faucett+6000+Callao+07031"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="absolute bottom-4 right-4 bg-white px-4 py-2 rounded-full shadow-md flex items-center gap-2 transform transition-transform duration-300 hover:scale-105 hover:bg-blue-50"
+                        class="absolute flex items-center gap-2 px-4 py-2 transition-transform duration-300 transform bg-white rounded-full shadow-md bottom-4 right-4 hover:scale-105 hover:bg-blue-50"
                       >
                         <span>Ver en Google Maps</span
                         ><svg
@@ -389,14 +389,13 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="lucide lucide-external-link h-4 w-4"
+                          class="w-4 h-4 lucide lucide-external-link"
                         >
                           <path d="M15 3h6v6"></path>
                           <path d="M10 14 21 3"></path>
                           <path
                             d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          ></path></svg
-                      ></a>
+                          ></path></svg></a>
                     </div>
                   </div>
                 </div>
@@ -409,7 +408,7 @@
 
     <!-- Footer -->
     <footer class="bg-[#006D88] text-white py-8">
-      <div class="container mx-auto px-4 text-center">
+      <div class="container px-4 mx-auto text-center">
         © 2025 Smartt Transport SAC. Todos los derechos reservados.
       </div>
     </footer>
@@ -420,8 +419,8 @@
       target="_blank"
       class="fixed bottom-5 right-5 flex items-center bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
     >
-      <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
-      <span class="ml-2 text-sm sm:text-lg font-semibold hidden sm:inline"
+      <i class="text-2xl fab fa-whatsapp sm:text-3xl"></i>
+      <span class="hidden ml-2 text-sm font-semibold sm:text-lg sm:inline"
         >SBC-WHATSAPP</span
       >
     </a>
