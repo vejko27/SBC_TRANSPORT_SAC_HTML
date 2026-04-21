@@ -3,84 +3,124 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smartt Transport SAC</title>
-    <link href="/output.css" rel="stylesheet">
+    <link href="/output.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
   <body class="bg-gray-100">
-   <!-- Barra de Información Superior -->
-<div class="bg-[#006D88] text-white">
-    <div class="container px-4 mx-auto">
-        <div class="flex flex-col justify-between py-3 space-y-2 sm:flex-row sm:space-y-0">
-            <!-- Contenedor de email -->
-            <div class="flex items-center justify-center sm:justify-start">
-                <i class="fas fa-envelope text-[#EFBB0C] mr-2"></i>
-                <span class="text-[#F7F7F7] text-sm sm:text-base break-all">
-                        cordinador.transporte@gruposbc.com.pe
-                    </span>
+    <!-- Barra de Información Superior -->
+    <div class="bg-[#006D88] text-white">
+      <div class="container px-4 mx-auto">
+        <div
+          class="flex flex-col justify-between py-3 space-y-2 sm:flex-row sm:space-y-0"
+        >
+          <!-- Contenedor de email -->
+          <div class="flex items-center justify-center sm:justify-start">
+            <i class="fas fa-envelope text-[#EFBB0C] mr-2"></i>
+            <span class="text-[#F7F7F7] text-sm sm:text-base break-all">
+              transportes@gruposbc.com.pe
+            </span>
+          </div>
+          <!-- Contenedor de teléfonos -->
+          <div
+            class="flex flex-col items-center justify-center space-y-1 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-4"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-phone-alt text-[#EFBB0C] mr-2"></i>
+              <span class="text-[#F7F7F7] text-sm sm:text-base">
+                Móvil: +51 936 804 211
+              </span>
             </div>
-            <!-- Contenedor de teléfonos -->
-            <div class="flex flex-col items-center justify-center space-y-1 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-4">
-                <div class="flex items-center">
-                    <i class="fas fa-phone-alt text-[#EFBB0C] mr-2"></i>
-                    <span class="text-[#F7F7F7] text-sm sm:text-base">
-                            Móvil: +51 936 804 211
-                        </span>
-                </div>
-                <div class="flex items-center">
-                        <span class="text-[#F7F7F7] text-sm sm:text-base">
-                            | Fijo: 01-7540464
-                        </span>
-                </div>
+            <div class="flex items-center">
+              <span class="text-[#F7F7F7] text-sm sm:text-base">
+                | Fijo: 01-7540464
+              </span>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Barra de Navegación -->
-<nav class="bg-white shadow">
-    <div class="container px-4 mx-auto">
+    <!-- Barra de Navegación -->
+    <nav class="bg-white shadow">
+      <div class="container px-4 mx-auto">
         <div class="flex items-center justify-between h-16">
-            <!-- Logo -->
-            <a href="http://127.0.0.1:8000" class="flex items-center flex-shrink-0">
-                <img src="images/logo/logo.png" alt="Logo de la Empresa" class="w-auto h-8" onerror="this.onerror=null; this.src='http://127.0.0.1:8000/images/logo/placeholder.png'">
+          <!-- Logo -->
+          <a
+            href="http://127.0.0.1:8000"
+            class="flex items-center flex-shrink-0"
+          >
+            <img
+              src="images/logo/logo.png"
+              alt="Logo de la Empresa"
+              class="w-auto h-8"
+              onerror="
+                this.onerror = null;
+                this.src = 'http://127.0.0.1:8000/images/logo/placeholder.png';
+              "
+            />
+          </a>
+
+          <!-- Enlaces Desktop -->
+          <div class="items-center hidden space-x-8 md:flex">
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium"
+            >
+              Inicio
             </a>
+            <a
+              href="contactenos.html"
+              class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium"
+            >
+              Contáctenos
+            </a>
+          </div>
 
-            <!-- Enlaces Desktop -->
-            <div class="items-center hidden space-x-8 md:flex">
-                <a href="index.html" class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium">
-                    Inicio
-                </a>
-                <a href="contactenos.html" class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium">
-                    Contáctenos
-                </a>
-            </div>
-
-            <!-- Botón menú móvil -->
-            <div class="md:hidden">
-                <button id="mobile-menu-toggle" class="text-gray-700 hover:text-[#EFBB0C] focus:outline-none p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+          <!-- Botón menú móvil -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-toggle"
+              class="text-gray-700 hover:text-[#EFBB0C] focus:outline-none p-2"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Menú móvil -->
         <div id="mobile-menu" class="hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50">
-                    Inicio
-                </a>
-                <a href="contactenos.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50">
-                    Contáctenos
-                </a>
-            </div>
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a
+              href="index.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50"
+            >
+              Inicio
+            </a>
+            <a
+              href="contactenos.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50"
+            >
+              Contáctenos
+            </a>
+          </div>
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
 
     <!-- Contenido Principal -->
     <div class="w-full">
@@ -395,7 +435,8 @@
                           <path d="M10 14 21 3"></path>
                           <path
                             d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                          ></path></svg></a>
+                          ></path></svg
+                      ></a>
                     </div>
                   </div>
                 </div>
