@@ -5,21 +5,28 @@ session_set_cookie_params([
     'samesite' => 'Lax',
 ]);
 session_start();
+date_default_timezone_set('America/Lima');
 require_once __DIR__ . '/enviar_reclamacion.php';
 
 if (empty($_SESSION['reclamacion_csrf'])) {
     $_SESSION['reclamacion_csrf'] = bin2hex(random_bytes(32));
 }
 
-if (($_SESSION['reclamacion_borrador']['version'] ?? null) !== 2
-    || empty($_SESSION['reclamacion_borrador']['numero'])
-    || !preg_match('/^\d{8}-\d{9}[A-F0-9]{4}$/', $_SESSION['reclamacion_borrador']['numero'])) {
-    $fechaBorrador = new DateTimeImmutable();
-    $_SESSION['reclamacion_borrador'] = [
-        'version' => 2,
-        'numero' => $fechaBorrador->format('Ymd-Hisv') . strtoupper(bin2hex(random_bytes(2))),
-        'fecha' => $fechaBorrador->format(DateTimeInterface::ATOM),
-    ];
+$numeroBorrador = $_SESSION['reclamacion_borrador']['numero'] ?? null;
+if (($_SESSION['reclamacion_borrador']['version'] ?? null) !== 3
+    || !is_string($numeroBorrador)
+    || !preg_match('/^RCL-\d{6,}$/', $numeroBorrador)) {
+    try {
+        $fechaBorrador = new DateTimeImmutable('now', new DateTimeZone('America/Lima'));
+        $_SESSION['reclamacion_borrador'] = [
+            'version' => 3,
+            'numero' => siguienteNumeroReclamacion(),
+            'fecha' => $fechaBorrador->format(DateTimeInterface::ATOM),
+        ];
+    } catch (Throwable $exception) {
+        error_log('Error al reservar un número de reclamación: ' . $exception->getMessage());
+        $_SESSION['reclamacion_error'] = 'No se pudo iniciar el Libro de Reclamaciones. Inténtalo nuevamente más tarde.';
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,7 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             $datosValidados = validarDatosReclamacion($_POST);
-            $fechaRegistro = new DateTimeImmutable();
+            if (empty($_SESSION['reclamacion_borrador']['numero'])) {
+                throw new RuntimeException('No hay un número de seguimiento disponible para esta reclamación.');
+            }
+            $fechaRegistro = new DateTimeImmutable('now', new DateTimeZone('America/Lima'));
             $numeroRegistro = $_SESSION['reclamacion_borrador']['numero'];
             enviarCorreoReclamacion($datosValidados, $numeroRegistro, $fechaRegistro);
             $_SESSION['reclamacion_exito'] = 'Tu reclamación fue enviada correctamente. Gracias por comunicarte con SMARTT.';
@@ -80,7 +90,7 @@ $mensajeError = $_SESSION['reclamacion_error'] ?? '';
 $registro = $_SESSION['reclamacion_registro'] ?? null;
 $constanciaVisible = $mensajeExito !== '' && is_array($registro)
     ? $registro
-    : $_SESSION['reclamacion_borrador'];
+    : ($_SESSION['reclamacion_borrador'] ?? null);
 $datosFormulario = $_SESSION['reclamacion_datos'] ?? [];
 unset(
     $_SESSION['reclamacion_exito'],
@@ -277,7 +287,7 @@ function valorFormulario($campo)
 
                 <div class="form-footer">
                     <p>Verifica tus datos antes de enviar el formulario.</p>
-                    <button class="submit-button" type="submit">Enviar reclamación <span aria-hidden="true">→</span></button>
+                    <button class="submit-button" type="submit" <?= is_array($_SESSION['reclamacion_borrador'] ?? null) ? '' : 'disabled' ?>>Enviar reclamación <span aria-hidden="true">→</span></button>
                 </div>
             </form>
         </div>
@@ -291,7 +301,8 @@ function valorFormulario($campo)
             const date = new Date(registrationDate.dateTime);
             registrationDate.textContent = new Intl.DateTimeFormat('es-PE', {
                 dateStyle: 'medium',
-                timeStyle: 'short'
+                timeStyle: 'medium',
+                timeZone: 'America/Lima'
             }).format(date);
         }
 
