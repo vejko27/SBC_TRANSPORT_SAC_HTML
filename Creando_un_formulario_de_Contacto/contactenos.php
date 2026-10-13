@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/php/send.php';
 
-$urlVolver = 'https://smartt.com.pe';
+$urlVolver = '../contactenos.html';
 $errores = [];
 $enviado = '';
 

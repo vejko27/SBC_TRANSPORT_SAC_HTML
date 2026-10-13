@@ -3,8 +3,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smartt Transport SAC</title>
-    <link rel="icon" href="{{ asset('images/logo/logo.png') }}" />
-    <link href="/output.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/logo/logo.png?v=1" />
+    <link href="./output.css?v=4" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -83,6 +83,10 @@
           <div class="md:hidden">
             <button
               id="mobile-menu-toggle"
+              type="button"
+              aria-label="Abrir menú"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
               class="text-gray-700 hover:text-[#EFBB0C] focus:outline-none p-2"
             >
               <svg
@@ -134,34 +138,46 @@
     <div class="w-full">
       <div class="max-w-full mx-auto">
         <!-- Hero Section with Company Background -->
-        <div
-          class="relative flex items-center justify-center h-screen bg-center bg-no-repeat bg-cover"
-          style="
-            background-image: url(&quot;images/backgrounds/sbc_Fondo.png&quot;);
-          "
+        <section
+          id="hero-carousel"
+          class="hero-section relative flex items-center justify-center overflow-hidden"
+          role="region"
+          aria-label="Imágenes de la flota SMARTT"
         >
-          <!-- Overlay para mejorar legibilidad -->
-          <div class="absolute inset-0 bg-black/60"></div>
+          <img
+            id="hero-slide-a"
+            src="./images/hero/banner-sbc-1.jpg"
+            alt=""
+            aria-hidden="true"
+            class="absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-700"
+          />
+          <img
+            id="hero-slide-b"
+            src="./images/hero/banner-sbc-2.jpg"
+            alt=""
+            aria-hidden="true"
+            class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-700"
+          />
 
-          <div class="relative flex flex-col w-full h-full">
+          <div class="relative z-10 flex h-full w-full flex-col">
             <div
-              class="flex flex-col items-center justify-center flex-1 px-4 text-white"
+              class="flex flex-1 flex-col items-center justify-center px-4"
             >
-              <h1
-                class="text-2xl font-bold text-center sm:text-3xl md:text-4xl lg:text-5xl"
+              <div
+                class="hero-copy max-w-4xl px-4 py-6 text-center text-white sm:px-10 sm:py-10"
               >
-                Soluciones de Transporte Confiables
-              </h1>
-              <p
-                class="max-w-2xl mt-4 text-sm text-center sm:text-base md:text-lg"
-              >
-                Ofrecemos servicios de transporte seguros y eficientes para
-                satisfacer todas tus necesidades logísticas
-              </p>
+                <h1
+                  class="text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
+                >
+                  Soluciones de Transporte Confiables
+                </h1>
+                <p class="mx-auto mt-4 max-w-2xl text-sm text-white sm:text-base md:text-lg">
+                  Ofrecemos servicios de transporte seguros y eficientes para
+                  satisfacer todas tus necesidades logísticas
+                </p>
+              </div>
             </div>
-            <div
-              class="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"
-            >
+            <div class="hidden">
               <div
                 class="flex items-center justify-center gap-2 px-4 py-2 sm:gap-4"
               >
@@ -230,98 +246,88 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- Clients Section -->
-        <div id="clients" class="px-4 py-16 bg-gray-50">
+        <section id="clients" class="bg-gray-50 px-4 py-14 sm:py-16">
           <div class="container mx-auto">
             <h2
-              class="text-4xl font-bold text-center text-[#006D88] mb-12 text-gray-800 animate-fade-in-up"
+              class="mb-3 text-center text-3xl font-bold text-[#006D88] sm:text-4xl"
             >
               Nuestros Clientes
             </h2>
+            <p class="mb-8 text-center text-sm text-gray-600 sm:text-base">
+              Empresas que confían en nuestros servicios de transporte.
+            </p>
 
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
+            <div id="clients-carousel-wrapper" class="relative">
+              <div
+                role="region"
+                aria-label="Carrusel de logos de nuestros clientes"
+              >
+                <ul
+                  id="clients-carousel"
+                  class="clients-carousel-track flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-5 sm:gap-6"
+                  tabindex="0"
                 >
-                  <img
-                    src="./images/clients/dp wo logo.png"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/dp wo logo.png" alt="Logo de DP World" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/fargoline_sa_logo.jpeg" alt="Logo de Fargoline" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/itaw logo.png" alt="Logo de ITAW" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/logo kline.png" alt="Logo de K Line" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/partner.png" alt="Logo de cliente" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/schryver.png" alt="Logo de Schryver" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
+                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
+                      <img src="./images/clients/Cliente3jfif.jfif" alt="Logo de cliente" class="h-24 w-full object-contain" />
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
+              <div class="mt-2 flex justify-center gap-3">
+                <button
+                  id="clients-previous"
+                  type="button"
+                  aria-label="Ver clientes anteriores"
+                  class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-[#006D88] shadow-sm transition hover:bg-[#006D88] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#006D88] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  <img
-                    src="./images/clients/fargoline_sa_logo.jpeg"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
+                  <span aria-hidden="true" class="text-2xl leading-none">‹</span>
+                </button>
+                <button
+                  id="clients-next"
+                  type="button"
+                  aria-label="Ver más clientes"
+                  class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-[#006D88] shadow-sm transition hover:bg-[#006D88] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#006D88] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  <img
-                    src="./images/clients/itaw logo.png"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
-                >
-                  <img
-                    src="./images/clients/logo kline.png"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
-                >
-                  <img
-                    src="./images/clients/partner.png"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
-                >
-                  <img
-                    src="./images/clients/schryver.png"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center group">
-                <div
-                  class="flex items-center justify-center p-6 transition-all duration-300 ease-in-out transform bg-white border border-gray-100 shadow-md rounded-xl hover:-translate-y-2 hover:shadow-xl group-hover:border-blue-200"
-                >
-                  <img
-                    src="./images/clients/Cliente3jfif.jfif"
-                    alt="Cliente"
-                    class="object-contain h-24 w-full max-w-[150px] group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                  />
-                </div>
+                  <span aria-hidden="true" class="text-2xl leading-none">›</span>
+                </button>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
 
@@ -348,8 +354,174 @@
       document
         .getElementById("mobile-menu-toggle")
         .addEventListener("click", function () {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
+          const mobileMenu = document.getElementById("mobile-menu");
+          const isExpanded = this.getAttribute("aria-expanded") === "true";
+          mobileMenu.classList.toggle("hidden", isExpanded);
+          this.setAttribute("aria-expanded", String(!isExpanded));
+          this.setAttribute("aria-label", isExpanded ? "Abrir menú" : "Cerrar menú");
         });
+
+      const clientsCarousel = document.getElementById("clients-carousel");
+      const clientsCarouselWrapper = document.getElementById(
+        "clients-carousel-wrapper",
+      );
+      const clientsPrevious = document.getElementById("clients-previous");
+      const clientsNext = document.getElementById("clients-next");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const heroImages = [
+        "./images/hero/banner-sbc-1.jpg",
+        "./images/hero/banner-sbc-2.jpg",
+        "./images/hero/banner-sbc-3.jpg",
+      ];
+      const heroSlides = [
+        document.getElementById("hero-slide-a"),
+        document.getElementById("hero-slide-b"),
+      ];
+      let activeHeroSlide = 0;
+      let activeHeroImage = 0;
+      let heroAutoplay;
+      let clientsAutoplay;
+
+      heroImages.forEach(function (imageSource) {
+        const image = new Image();
+        image.src = imageSource;
+      });
+
+      function stopHeroAutoplay() {
+        window.clearInterval(heroAutoplay);
+        heroAutoplay = undefined;
+      }
+
+      function startHeroAutoplay() {
+        stopHeroAutoplay();
+        if (prefersReducedMotion.matches || document.hidden) {
+          return;
+        }
+
+        heroAutoplay = window.setInterval(function () {
+          const nextImage = (activeHeroImage + 1) % heroImages.length;
+          const incomingSlideIndex = 1 - activeHeroSlide;
+          const incomingSlide = heroSlides[incomingSlideIndex];
+          const outgoingSlide = heroSlides[activeHeroSlide];
+
+          function revealNextImage() {
+            if (!incomingSlide.naturalWidth) {
+              return;
+            }
+
+            incomingSlide.classList.replace("opacity-0", "opacity-100");
+            outgoingSlide.classList.replace("opacity-100", "opacity-0");
+            incomingSlide.onload = null;
+            incomingSlide.onerror = null;
+            activeHeroSlide = incomingSlideIndex;
+            activeHeroImage = nextImage;
+          }
+
+          incomingSlide.onload = revealNextImage;
+          incomingSlide.onerror = function () {
+            console.error("No se pudo cargar la imagen del banner:", heroImages[nextImage]);
+            incomingSlide.onload = null;
+            incomingSlide.onerror = null;
+            activeHeroImage = nextImage;
+          };
+          incomingSlide.src = heroImages[nextImage];
+
+          if (incomingSlide.complete && incomingSlide.naturalWidth) {
+            revealNextImage();
+          }
+        }, 1500);
+      }
+
+      function updateClientsControls() {
+        const maxScroll = clientsCarousel.scrollWidth - clientsCarousel.clientWidth;
+        clientsPrevious.disabled = clientsCarousel.scrollLeft <= 0;
+        clientsNext.disabled = clientsCarousel.scrollLeft >= maxScroll - 1;
+      }
+
+      clientsPrevious.addEventListener("click", function () {
+        clientsCarousel.scrollBy({
+          left: -clientsCarousel.clientWidth * 0.8,
+          behavior: "smooth",
+        });
+      });
+      clientsNext.addEventListener("click", function () {
+        clientsCarousel.scrollBy({
+          left: clientsCarousel.clientWidth * 0.8,
+          behavior: "smooth",
+        });
+      });
+
+      function stopClientsAutoplay() {
+        window.clearInterval(clientsAutoplay);
+        clientsAutoplay = undefined;
+      }
+
+      function startClientsAutoplay() {
+        stopClientsAutoplay();
+        if (prefersReducedMotion.matches || document.hidden) {
+          return;
+        }
+
+        clientsAutoplay = window.setInterval(function () {
+          const maxScroll =
+            clientsCarousel.scrollWidth - clientsCarousel.clientWidth;
+          const nextClient = Array.from(clientsCarousel.children).find(
+            (client) => client.offsetLeft > clientsCarousel.scrollLeft + 2,
+          );
+
+          if (
+            maxScroll <= 0 ||
+            !nextClient ||
+            nextClient.offsetLeft >= maxScroll - 1
+          ) {
+            clientsCarousel.scrollTo({ left: 0, behavior: "smooth" });
+            return;
+          }
+
+          clientsCarousel.scrollTo({
+            left: nextClient.offsetLeft,
+            behavior: "smooth",
+          });
+        }, 1500);
+      }
+
+      clientsCarouselWrapper.addEventListener(
+        "pointerenter",
+        stopClientsAutoplay,
+      );
+      clientsCarouselWrapper.addEventListener(
+        "pointerleave",
+        startClientsAutoplay,
+      );
+      clientsCarouselWrapper.addEventListener("focusin", stopClientsAutoplay);
+      clientsCarouselWrapper.addEventListener("focusout", function (event) {
+        if (!clientsCarouselWrapper.contains(event.relatedTarget)) {
+          startClientsAutoplay();
+        }
+      });
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          stopHeroAutoplay();
+          stopClientsAutoplay();
+        } else {
+          startHeroAutoplay();
+          startClientsAutoplay();
+        }
+      });
+      prefersReducedMotion.addEventListener("change", function () {
+        startHeroAutoplay();
+        startClientsAutoplay();
+      });
+
+      clientsCarousel.addEventListener("scroll", updateClientsControls, {
+        passive: true,
+      });
+      window.addEventListener("resize", updateClientsControls);
+      updateClientsControls();
+      startHeroAutoplay();
+      startClientsAutoplay();
     </script>
   </body>
 </html>

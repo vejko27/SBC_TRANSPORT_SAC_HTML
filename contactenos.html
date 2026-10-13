@@ -3,7 +3,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smartt Transport SAC</title>
-    <link href="/output.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/logo/logo.png?v=1" />
+    <link href="./output.css?v=4" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -77,6 +78,10 @@
           <div class="md:hidden">
             <button
               id="mobile-menu-toggle"
+              type="button"
+              aria-label="Abrir menú"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
               class="text-gray-700 hover:text-[#EFBB0C] focus:outline-none p-2"
             >
               <svg
@@ -126,16 +131,16 @@
     <!-- Contenido Principal -->
     <div class="w-full">
       <div class="max-w-full mx-auto">
-        <div class="container px-4 py-16 mx-auto">
+        <div class="container mx-auto px-2 py-8 sm:px-4 sm:py-12 lg:py-16">
           <div class="grid grid-cols-1 gap-8 md:grid-cols-1">
             <!-- Formulario de Contacto -->
-            <div class="px-6 mx-auto max-w-7xl">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6">
               <h2
-                class="mb-12 text-4xl font-bold text-center text-gray-800 transition-colors duration-300 hover:text-blue-600"
+                class="mb-8 text-center text-3xl font-bold text-gray-800 transition-colors duration-300 hover:text-blue-600 sm:mb-12 sm:text-4xl"
               >
                 Contáctenos
               </h2>
-              <div class="grid gap-8 mb-12 md:grid-cols-3">
+              <div class="mb-10 grid gap-5 sm:grid-cols-2 lg:mb-12 lg:gap-8 xl:grid-cols-3">
                 <div
                   class="relative flex flex-col items-center p-6 overflow-hidden transition-all duration-300 ease-in-out transform scale-100 bg-white rounded-lg shadow-lg"
                 >
@@ -395,6 +400,84 @@
                   </div>
                 </div>
               </div>
+              <details
+                class="mt-12 w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+              >
+                <summary
+                  class="cursor-pointer border-b border-gray-200 px-6 py-5 text-center text-xl font-semibold text-gray-800 transition-colors hover:text-[#006D88]"
+                >
+                  Formulario de Contáctenos
+                </summary>
+                <div class="mx-auto max-w-4xl p-6">
+                  <form
+                    action="Creando_un_formulario_de_Contacto/contactenos.php"
+                    method="post"
+                    class="w-full overflow-hidden rounded border border-gray-200 border-t-4 border-t-[#087b94] bg-white px-6 py-8 shadow-xl sm:px-10"
+                  >
+                    <img
+                      src="Creando_un_formulario_de_Contacto/Iconos/SBC_TRANSPORT.png"
+                      alt="SMARTT - Transporte de carga pesada"
+                      class="mb-7 block h-auto w-[190px] max-w-[70%]"
+                    />
+                    <h3
+                      class="text-[clamp(1.6rem,5vw,2rem)] font-bold leading-tight text-[#1c2933]"
+                    >
+                      Contáctenos
+                    </h3>
+                    <p class="mb-7 mt-2 text-base text-[#687781]">
+                      Envíanos tu consulta y nuestro equipo se pondrá en
+                      contacto contigo.
+                    </p>
+                    <label for="contacto-nombre" class="sr-only">Nombre</label>
+                    <input
+                      id="contacto-nombre"
+                      name="nombre"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      class="mb-4 block w-full rounded border border-[#bccbd1] bg-white px-4 py-3.5 text-[#1c2933] placeholder:text-[#71818a] focus:border-[#087b94] focus:outline-none focus:ring-2 focus:ring-[#087b94]/20"
+                      placeholder="Nombre"
+                    />
+                    <label for="contacto-correo" class="sr-only"
+                      >Correo electrónico</label
+                    >
+                    <input
+                      id="contacto-correo"
+                      name="correo"
+                      type="email"
+                      autocomplete="email"
+                      required
+                      class="mb-4 block w-full rounded border border-[#bccbd1] bg-white px-4 py-3.5 text-[#1c2933] placeholder:text-[#71818a] focus:border-[#087b94] focus:outline-none focus:ring-2 focus:ring-[#087b94]/20"
+                      placeholder="Correo electrónico"
+                    />
+                    <label for="contacto-mensaje" class="sr-only">Mensaje</label>
+                    <textarea
+                      id="contacto-mensaje"
+                      name="mensaje"
+                      rows="6"
+                      required
+                      class="mb-4 block min-h-[160px] w-full resize-y rounded border border-[#bccbd1] bg-white px-4 py-3.5 text-[#1c2933] placeholder:text-[#71818a] focus:border-[#087b94] focus:outline-none focus:ring-2 focus:ring-[#087b94]/20"
+                      placeholder="¿En qué podemos ayudarte?"
+                    ></textarea>
+                    <div class="mt-1 flex flex-col justify-between gap-3 sm:flex-row">
+                      <a
+                        href="contactenos.html"
+                        class="inline-flex min-h-12 items-center justify-center rounded border border-[#087b94] bg-white px-5 py-3 font-bold text-[#087b94] transition-colors hover:bg-[#eaf5f7] focus:outline-none focus:ring-2 focus:ring-[#8dbb3f] focus:ring-offset-2"
+                      >
+                        Volver
+                      </a>
+                      <button
+                        type="submit"
+                        name="submit"
+                        value="Enviar Correo"
+                        class="inline-flex min-h-12 items-center justify-center rounded bg-[#087b94] px-5 py-3 font-bold text-white transition-colors hover:bg-[#05677d] focus:outline-none focus:ring-2 focus:ring-[#8dbb3f] focus:ring-offset-2"
+                      >
+                        Enviar Correo
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </details>
               <div class="mt-12">
                 <h3
                   class="mb-6 text-2xl font-semibold text-center text-gray-800"
@@ -408,7 +491,7 @@
                     <div class="relative">
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4197.403666325202!2d-77.12939031843936!3d-11.997271157902189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cdca638d462b%3A0xa65e68b2fbb40d63!2sAv.%20Elmer%20Faucett%206000%2C%20Callao%2007031!5e1!3m2!1ses!2spe!4v1730765328098!5m2!1ses!2spe"
-                        class="w-full h-[450px] md:h-[600px]"
+                        class="h-[320px] w-full sm:h-[420px] lg:h-[600px]"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         style="border: 0px"
@@ -471,7 +554,11 @@
       document
         .getElementById("mobile-menu-toggle")
         .addEventListener("click", function () {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
+          const mobileMenu = document.getElementById("mobile-menu");
+          const isExpanded = this.getAttribute("aria-expanded") === "true";
+          mobileMenu.classList.toggle("hidden", isExpanded);
+          this.setAttribute("aria-expanded", String(!isExpanded));
+          this.setAttribute("aria-label", isExpanded ? "Abrir menú" : "Cerrar menú");
         });
     </script>
   </body>
