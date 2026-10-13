@@ -346,7 +346,7 @@ function valorFormulario($campo)
             });
         });
     </script>
-    <script src="../site-nav.js"></script>
+    <script src="../site-nav.js?v=2"></script>
     <script src="../site-footer.js"></script>
     <script src="../whatsapp-widget.js"></script>
 </body>

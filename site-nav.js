@@ -21,7 +21,9 @@
     <div class="site-nav-topbar">
       <div class="site-nav-topbar-inner">
         <a class="site-nav-email" href="mailto:transportes@gruposbc.com.pe">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm1.8 1.5L12 12l7.2-5.5H4.8ZM19.5 17V8.4l-7.1 5.4a.7.7 0 0 1-.8 0L4.5 8.4V17h15Z"/></svg>
+          <span class="site-nav-email-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M3 5h18v14H3V5Zm1.8 1.5L12 12l7.2-5.5H4.8ZM19.5 17V8.4l-7.1 5.4a.7.7 0 0 1-.8 0L4.5 8.4V17h15Z"/></svg>
+          </span>
           <span>transportes@gruposbc.com.pe</span>
         </a>
         <div class="site-nav-phones">
@@ -61,7 +63,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = url("site-nav.css");
+  stylesheet.href = `${url("site-nav.css")}?v=2`;
   document.head.appendChild(stylesheet);
 
   document

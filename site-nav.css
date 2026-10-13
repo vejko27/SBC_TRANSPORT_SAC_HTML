@@ -39,11 +39,21 @@
   gap: 10px;
 }
 
-.site-nav-email svg {
-  width: 14px;
-  height: 14px;
+.site-nav-email-icon {
+  width: 34px;
+  height: 34px;
   flex: 0 0 auto;
-  fill: #efbb0c;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #efbb0c;
+  border-radius: 50%;
+}
+
+.site-nav-email-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
 }
 
 .site-nav-phones {
