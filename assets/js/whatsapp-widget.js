@@ -6,7 +6,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = new URL("whatsapp-widget.css", script.src).href;
+  stylesheet.href = `${new URL("../css/whatsapp-widget.css", script.src).href}?v=2`;
   document.head.appendChild(stylesheet);
 
   const link = document.createElement("a");

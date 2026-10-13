@@ -4,7 +4,7 @@
     throw new Error("No se pudo determinar la ubicación de la navegación compartida.");
   }
 
-  const siteRoot = new URL(".", script.src);
+  const siteRoot = new URL("../../", script.src);
   const url = (path) => new URL(path, siteRoot).href;
   const pathname = window.location.pathname.toLowerCase();
   const activePage = pathname.includes("/nosotros/")
@@ -27,8 +27,18 @@
           <span>transportes@gruposbc.com.pe</span>
         </a>
         <div class="site-nav-phones">
-          <a href="tel:+51936804211">Móvil: +51 936 804 211</a>
-          <a href="tel:+5117540464">Fijo: 01-7540464</a>
+          <a href="tel:+51936804211">
+            <span class="smartt-phone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.5 17.5 0 0 1 2.9 4.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1l-2.2 2.2Z"/></svg>
+            </span>
+            <span>Móvil: +51 936 804 211</span>
+          </a>
+          <a href="tel:+5117540464">
+            <span class="smartt-phone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.5 17.5 0 0 1 2.9 4.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1l-2.2 2.2Z"/></svg>
+            </span>
+            <span>Fijo: 01-7540464</span>
+          </a>
         </div>
       </div>
     </div>
@@ -63,7 +73,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = `${url("site-nav.css")}?v=2`;
+  stylesheet.href = `${url("assets/css/site-nav.css")}?v=4`;
   document.head.appendChild(stylesheet);
 
   document

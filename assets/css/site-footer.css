@@ -1,3 +1,4 @@
+/* Estilos del footer compartido. */
 .site-footer {
   box-sizing: border-box;
   padding: 32px 0;
@@ -71,13 +72,49 @@
 }
 
 .footer-quote-number {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   margin: -2px 0 6px;
   color: #efbb0c;
   font-size: clamp(1.55rem, 2vw, 2rem);
   font-weight: 800;
   line-height: 1.1;
   text-decoration: none;
+}
+
+.footer-phone-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #efbb0c;
+  border-radius: 50%;
+}
+
+.footer-phone-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.footer-contact-phone-item {
+  display: block;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.footer-contact-phone-item > span {
+  display: grid;
+  gap: 9px;
+}
+
+.footer-contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
 }
 
 .footer-quote-copy {

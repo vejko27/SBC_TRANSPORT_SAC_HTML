@@ -9,8 +9,8 @@
     />
     <title>Nosotros | SMARTT Transport SAC</title>
     <link rel="icon" type="image/png" href="../images/logo/logo.png?v=1" />
-    <link rel="stylesheet" href="../output.css?v=4" />
-    <link rel="stylesheet" href="./nosotros.css?v=1" />
+    <link rel="stylesheet" href="../assets/css/output.css?v=5" />
+    <link rel="stylesheet" href="./nosotros.css?v=3" />
   </head>
   <body>
     <main>
@@ -163,12 +163,65 @@
           <p class="eyebrow eyebrow-dark">Relaciones que nos impulsan</p>
           <h2 id="clients-title">Empresas que confían en nosotros</h2>
         </div>
-        <div class="client-logos" aria-label="Algunos de nuestros clientes">
-          <img src="../images/clients/dp wo logo.png" alt="DP World" loading="lazy" />
-          <img src="../images/clients/fargoline_sa_logo.jpeg" alt="Fargoline" loading="lazy" />
-          <img src="../images/clients/itaw logo.png" alt="ITAW" loading="lazy" />
-          <img src="../images/clients/logo kline.png" alt="K Line" loading="lazy" />
-          <img src="../images/clients/schryver.png" alt="Schryver" loading="lazy" />
+        <div class="clients-carousel-wrapper" id="about-clients-carousel-wrapper">
+          <div role="region" aria-label="Carrusel de logos de nuestros clientes">
+            <ul
+              class="clients-carousel-track"
+              id="about-clients-carousel"
+              tabindex="0"
+            >
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/dp wo logo.png" alt="Logo de DP World" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/fargoline_sa_logo.jpeg" alt="Logo de Fargoline" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/itaw logo.png" alt="Logo de ITAW" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/logo kline.png" alt="Logo de K Line" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/partner.png" alt="Logo de cliente" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/schryver.png" alt="Logo de Schryver" loading="lazy" />
+                </div>
+              </li>
+              <li>
+                <div class="client-logo-card">
+                  <img src="../images/clients/Cliente3jfif.jfif" alt="Logo de cliente" loading="lazy" />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="clients-carousel-controls">
+            <button
+              class="clients-carousel-button"
+              id="about-clients-previous"
+              type="button"
+              aria-label="Ver clientes anteriores"
+              disabled
+            ><span aria-hidden="true">‹</span></button>
+            <button
+              class="clients-carousel-button"
+              id="about-clients-next"
+              type="button"
+              aria-label="Ver más clientes"
+            ><span aria-hidden="true">›</span></button>
+          </div>
         </div>
       </section>
 
@@ -184,8 +237,74 @@
       </section>
     </main>
 
-    <script src="../site-nav.js?v=2"></script>
-    <script src="../site-footer.js"></script>
-    <script src="../whatsapp-widget.js"></script>
+    <script>
+      (function () {
+        const carousel = document.getElementById("about-clients-carousel");
+        const wrapper = document.getElementById("about-clients-carousel-wrapper");
+        const previous = document.getElementById("about-clients-previous");
+        const next = document.getElementById("about-clients-next");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let autoplay;
+
+        function updateControls() {
+          const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+          previous.disabled = carousel.scrollLeft <= 1;
+          next.disabled = maxScroll <= 1 || carousel.scrollLeft >= maxScroll - 1;
+        }
+
+        function scrollToNext(direction) {
+          const cards = Array.from(carousel.children);
+          const target = direction > 0
+            ? cards.find((card) => card.offsetLeft > carousel.scrollLeft + 2)
+            : cards.filter((card) => card.offsetLeft < carousel.scrollLeft - 2).pop();
+
+          if (target) {
+            carousel.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+          }
+        }
+
+        function stopAutoplay() {
+          window.clearInterval(autoplay);
+          autoplay = undefined;
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          if (reduceMotion.matches || document.hidden) return;
+
+          autoplay = window.setInterval(function () {
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            if (maxScroll <= 1 || carousel.scrollLeft >= maxScroll - 1) {
+              carousel.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+              scrollToNext(1);
+            }
+          }, 3500);
+        }
+
+        previous.addEventListener("click", function () {
+          scrollToNext(-1);
+        });
+        next.addEventListener("click", function () {
+          scrollToNext(1);
+        });
+        carousel.addEventListener("scroll", updateControls, { passive: true });
+        carousel.addEventListener("focusin", stopAutoplay);
+        carousel.addEventListener("focusout", startAutoplay);
+        wrapper.addEventListener("pointerenter", stopAutoplay);
+        wrapper.addEventListener("pointerleave", startAutoplay);
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) stopAutoplay();
+          else startAutoplay();
+        });
+        reduceMotion.addEventListener("change", startAutoplay);
+        window.addEventListener("resize", updateControls);
+        updateControls();
+        startAutoplay();
+      })();
+    </script>
+    <script src="../assets/js/site-nav.js?v=4"></script>
+    <script src="../assets/js/site-footer.js?v=3"></script>
+    <script src="../assets/js/whatsapp-widget.js?v=2"></script>
   </body>
 </html>

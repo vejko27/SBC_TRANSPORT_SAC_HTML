@@ -1,3 +1,4 @@
+/* Estilos de la navegación compartida. */
 .site-nav-header {
   position: relative;
   z-index: 20;
@@ -20,6 +21,7 @@
   width: min(calc(100% - 40px), 1200px);
   min-height: 42px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -58,8 +60,32 @@
 
 .site-nav-phones {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
+}
+
+.site-nav-phones a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.smartt-phone-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #efbb0c;
+  border-radius: 50%;
+}
+
+.smartt-phone-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .site-nav-email:hover,
@@ -142,7 +168,8 @@
   }
 
   .site-nav-phones {
-    gap: 12px;
+    align-items: flex-start;
+    gap: 8px 14px;
     font-size: 0.8rem;
   }
 
