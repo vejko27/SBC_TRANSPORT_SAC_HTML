@@ -11,123 +11,7 @@
     />
   </head>
   <body class="bg-gray-100">
-    <!-- Barra de Información Superior -->
-    <div class="bg-[#006D88] text-white">
-      <div class="container px-4 mx-auto">
-        <div
-          class="flex flex-col justify-between py-3 space-y-2 sm:flex-row sm:space-y-0"
-        >
-          <!-- Contenedor de email -->
-          <div class="flex items-center justify-center sm:justify-start">
-            <i class="fas fa-envelope text-[#EFBB0C] mr-2"></i>
-            <span class="text-[#F7F7F7] text-sm sm:text-base break-all">
-              transportes@gruposbc.com.pe
-            </span>
-          </div>
-          <!-- Contenedor de teléfonos -->
-          <div
-            class="flex flex-col items-center justify-center space-y-1 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-4"
-          >
-            <div class="flex items-center">
-              <i class="fas fa-phone-alt text-[#EFBB0C] mr-2"></i>
-              <span class="text-[#F7F7F7] text-sm sm:text-base">
-                Móvil: +51 936 804 211
-              </span>
-            </div>
-            <div class="flex items-center">
-              <span class="text-[#F7F7F7] text-sm sm:text-base">
-                | Fijo: 01-7540464
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Barra de Navegación -->
-    <nav class="bg-white shadow">
-      <div class="container px-4 mx-auto">
-        <div class="flex items-center justify-between h-16">
-          
-          <!-- Logo -->
-          <a href="index.html" class="flex items-center flex-shrink-0">
-            <img
-              src="images/logo/logo.png"
-              alt="Logo de la Empresa"
-              class="w-auto h-8"
-            />
-          </a>
-
-          <!-- Enlaces Desktop -->
-          <div class="items-center hidden space-x-8 md:flex">
-            <a
-              href="index.html"
-              class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium"
-            >
-              Inicio
-            </a>
-            <a
-              href="contactenos.html"
-              class="text-gray-700 hover:text-[#EFBB0C] transition duration-300 text-lg font-medium"
-            >
-              Contáctenos
-            </a>
-          </div>
-
-          <!-- Botón menú móvil -->
-          <div class="md:hidden">
-            <button
-              id="mobile-menu-toggle"
-              type="button"
-              aria-label="Abrir menú"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-              class="text-gray-700 hover:text-[#EFBB0C] focus:outline-none p-2"
-            >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="index.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50"
-            >
-              Inicio
-            </a>
-            <a
-              href="./contactenos.html"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50"
-            >
-              Contáctenos
-            </a>
-            <a
-              href="https://extranet.smartt.com.pe/"
-              
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#EFBB0C] hover:bg-gray-50"
-            >
-              Extranet
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
     <!-- Contenido Principal -->
     <div class="w-full">
       <div class="max-w-full mx-auto">
@@ -538,28 +422,8 @@
       </div>
     </footer>
 
-    <!-- WhatsApp flotante -->
-    <a
-      href="https://wa.me/51936804211"
-      target="_blank"
-      class="fixed bottom-5 right-5 flex items-center bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-    >
-      <i class="text-2xl fab fa-whatsapp sm:text-3xl"></i>
-      <span class="hidden ml-2 text-sm font-semibold sm:text-lg sm:inline"
-        >SBC-WHATSAPP</span
-      >
-    </a>
-
-    <script>
-      document
-        .getElementById("mobile-menu-toggle")
-        .addEventListener("click", function () {
-          const mobileMenu = document.getElementById("mobile-menu");
-          const isExpanded = this.getAttribute("aria-expanded") === "true";
-          mobileMenu.classList.toggle("hidden", isExpanded);
-          this.setAttribute("aria-expanded", String(!isExpanded));
-          this.setAttribute("aria-label", isExpanded ? "Abrir menú" : "Cerrar menú");
-        });
-    </script>
+    <script src="./site-nav.js"></script>
+    <script src="./site-footer.js"></script>
+    <script src="./whatsapp-widget.js"></script>
   </body>
 </html>

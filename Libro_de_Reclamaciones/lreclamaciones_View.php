@@ -107,13 +107,6 @@ function valorFormulario($campo)
     <link rel="stylesheet" href="reclamaciones.css">
 </head>
 <body>
-    <header class="site-header">
-        <a class="brand" href="../index.html" aria-label="SMARTT Transport, ir al inicio">
-            <img src="../images/logo/logo.png" alt="SMARTT Transport">
-        </a>
-        <a class="back-link" href="../index.html">Volver al sitio <span aria-hidden="true">→</span></a>
-    </header>
-
     <main class="page-shell">
         <section class="intro" aria-labelledby="page-title">
             <p class="eyebrow">Atención al cliente</p>
@@ -353,5 +346,8 @@ function valorFormulario($campo)
             });
         });
     </script>
+    <script src="../site-nav.js"></script>
+    <script src="../site-footer.js"></script>
+    <script src="../whatsapp-widget.js"></script>
 </body>
 </html>
