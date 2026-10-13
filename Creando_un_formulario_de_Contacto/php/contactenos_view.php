@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style2.css?v=2">
     <link rel="icon" href="Iconos/SBC_TRANSPORT.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Contacto | SMARTT</title>
+    <title>Contáctenos_SBC</title>
 </head>
 <body>
 
