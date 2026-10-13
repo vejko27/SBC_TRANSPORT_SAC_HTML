@@ -66,7 +66,7 @@ function enviarCorreoContacto($nombre, $correo, $mensaje)
     $nombreHtml = htmlspecialchars($nombre, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $correoHtml = htmlspecialchars($correo, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $mensajeHtml = nl2br(htmlspecialchars($mensaje, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
-
+//Donde podemos editar el enunciado de título de llegada de mensaje como Nuevo mensaje Recibido
     $mailMessage = [
         'message' => [
             'subject' => 'Nuevo mensaje desde el formulario',
