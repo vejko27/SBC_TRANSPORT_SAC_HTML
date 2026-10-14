@@ -1,5 +1,11 @@
 <?php
 
+// // Configuración SMTP Microsoft 365
+// require_once '/home/smartbusinessper/Vcanova/correos.php';
+
+
+
+
 require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'Libro_de_Reclamaciones'
     . DIRECTORY_SEPARATOR . 'PHPMailer-master' . DIRECTORY_SEPARATOR . 'PHPMailer-master'
     . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Exception.php';
