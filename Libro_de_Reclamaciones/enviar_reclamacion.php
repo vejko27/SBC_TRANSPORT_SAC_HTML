@@ -1,5 +1,8 @@
 <?php
 
+// Cargar la configuración SMTP privada del hosting.
+// require_once '/home/smartbusinessper/Vcanova/correos.php';
+
 require_once __DIR__ . '/PHPMailer-master/PHPMailer-master/src/Exception.php';
 require_once __DIR__ . '/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
 require_once __DIR__ . '/PHPMailer-master/PHPMailer-master/src/SMTP.php';
