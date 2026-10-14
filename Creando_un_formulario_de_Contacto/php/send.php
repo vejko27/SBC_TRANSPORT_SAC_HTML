@@ -17,6 +17,7 @@ use PHPMailer\PHPMailer\PHPMailer;
  * de lo contrario usa el transporte local de PHP (mail()) para que funcione en
  * XAMPP sin depender de variables de entorno.
  */
+// $correosPath = __DIR__ . '/../Vcanova/correos.php';
 function enviarCorreoContacto($nombre, $correo, $mensaje)
 {
     $cuenta = 'contactenos@smartt.com.pe';
