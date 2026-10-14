@@ -69,12 +69,9 @@ function siguienteNumeroReclamacion()
 /**
  * Envía una reclamación por SMTP autenticado de Microsoft 365.
  *
- * Cambia las cuentas en la configuración del entorno de Apache, no aquí:
- * - O365_SMTP_USERNAME: buzón usado para autenticar y enviar.
- * - O365_SMTP_FROM: dirección visible del remitente (por defecto, el usuario).
- * - O365_SMTP_TO: destinatario de las reclamaciones. Para esta prueba, si no se
- *   configura, se utiliza victor.canova@gruposbc.com.pe.
- * - O365_SMTP_PASSWORD: contraseña o credencial SMTP del buzón remitente.
+ * La cuenta usada para autenticar, el remitente y el destinatario son el buzón
+ * del Libro de Reclamaciones de SMARTT. Configura su credencial SMTP mediante
+ * O365_SMTP_PASSWORD en Apache.
  * En XAMPP, define estas variables en la configuración de Apache fuera de
  * htdocs y reinicia Apache. No guardes valores secretos en el proyecto.
  * No guardes contraseñas en este archivo ni en el repositorio.
@@ -85,10 +82,10 @@ function enviarCorreoReclamacion(
     DateTimeImmutable $fechaRegistro
 )
 {
-    $usuario = getenv('O365_SMTP_USERNAME') ?: 'impresora1@gruposbc.com.pe';
+    $usuario = 'librodereclamaciones@smartt.com.pe';
     $contrasena = getenv('O365_SMTP_PASSWORD');
-    $remitente = getenv('O365_SMTP_FROM') ?: $usuario;
-    $destinatario = getenv('O365_SMTP_TO') ?: 'victor.canova@gruposbc.com.pe';
+    $remitente = 'librodereclamaciones@smartt.com.pe';
+    $destinatario = 'librodereclamaciones@smartt.com.pe';
     $servidor = getenv('O365_SMTP_HOST') ?: 'smtp.office365.com';
     $puerto = getenv('O365_SMTP_PORT') ?: '587';
 

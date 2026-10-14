@@ -1,190 +1,112 @@
 <?php
 
+require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'Libro_de_Reclamaciones'
+    . DIRECTORY_SEPARATOR . 'PHPMailer-master' . DIRECTORY_SEPARATOR . 'PHPMailer-master'
+    . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Exception.php';
+require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'Libro_de_Reclamaciones'
+    . DIRECTORY_SEPARATOR . 'PHPMailer-master' . DIRECTORY_SEPARATOR . 'PHPMailer-master'
+    . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'PHPMailer.php';
+require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'Libro_de_Reclamaciones'
+    . DIRECTORY_SEPARATOR . 'PHPMailer-master' . DIRECTORY_SEPARATOR . 'PHPMailer-master'
+    . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 /**
- * Envía el formulario mediante Microsoft Graph con credenciales de aplicación.
+ * Envía el formulario de contacto usando SMTP si hay credenciales configuradas;
+ * de lo contrario usa el transporte local de PHP (mail()) para que funcione en
+ * XAMPP sin depender de variables de entorno.
  */
 function enviarCorreoContacto($nombre, $correo, $mensaje)
 {
-    $config = [
-        'tenant_id' => getenv('O365_TENANT_ID'),
-        'client_id' => getenv('O365_CLIENT_ID'),
-        'client_secret' => getenv('O365_CLIENT_SECRET'),
-        'email_remitente' => getenv('O365_EMAIL_FROM'),
-        'email_destino' => getenv('O365_EMAIL_TO'),
-    ];
+    $cuenta = 'contactenos@smartt.com.pe';
+    $contrasena = getenv('CONTACTO_SMTP_PASSWORD') ?: getenv('SMTP_PASSWORD') ?: '';
+    $servidor = getenv('CONTACTO_SMTP_HOST') ?: getenv('SMTP_HOST') ?: '';
+    $puerto = getenv('CONTACTO_SMTP_PORT') ?: getenv('SMTP_PORT') ?: '587';
 
-    foreach ($config as $clave => $valor) {
-        if ($valor === false || $valor === '') {
-            throw new RuntimeException('Falta configurar la variable de entorno para ' . $clave . '.');
-        }
+    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        throw new InvalidArgumentException('La dirección de correo no es válida.');
     }
 
-    if (!function_exists('curl_init')) {
-        throw new RuntimeException('La extensión cURL de PHP no está habilitada.');
+    if (!ctype_digit((string) $puerto)
+        || (int) $puerto < 1
+        || (int) $puerto > 65535) {
+        throw new InvalidArgumentException('El puerto SMTP no es válido.');
     }
 
-    $tokenUrl = 'https://login.microsoftonline.com/'
-        . rawurlencode($config['tenant_id'])
-        . '/oauth2/v2.0/token';
+    $escape = static function ($valor) {
+        return htmlspecialchars((string) $valor, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    };
+    $nombreHtml = $escape($nombre);
+    $correoHtml = $escape($correo);
+    $mensajeHtml = nl2br($escape($mensaje));
 
-    $tokenResponse = solicitarHttp(
-        $tokenUrl,
-        ['Content-Type: application/x-www-form-urlencoded'],
-        http_build_query([
-            'client_id' => $config['client_id'],
-            'client_secret' => $config['client_secret'],
-            'scope' => 'https://graph.microsoft.com/.default',
-            'grant_type' => 'client_credentials',
-        ], '', '&', PHP_QUERY_RFC3986)
-    );
-
-    $tokenData = json_decode($tokenResponse['body'], true);
-    if ($tokenResponse['status'] < 200 || $tokenResponse['status'] >= 300
-        || !is_array($tokenData) || empty($tokenData['access_token'])) {
-        throw new RuntimeException(
-            'Microsoft no entregó un token de acceso. Respuesta: ' . $tokenResponse['body']
-        );
-    }
-
-    $nombreHtml = htmlspecialchars($nombre, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $correoHtml = htmlspecialchars($correo, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $mensajeHtml = nl2br(htmlspecialchars($mensaje, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
-
-    $logoPath = __DIR__ . '/../Iconos/SBC_TRANSPORT.png';
+    $logoPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR
+        . 'Iconos' . DIRECTORY_SEPARATOR . 'SBC_TRANSPORT.png';
     if (!is_readable($logoPath)) {
         throw new RuntimeException('No se encontró el logotipo para adjuntarlo al correo.');
     }
 
-    $logoBytes = file_get_contents($logoPath);
-    if ($logoBytes === false) {
-        throw new RuntimeException('No se pudo leer el logotipo para adjuntarlo al correo.');
+    $mailer = new PHPMailer(true);
+
+    if ($contrasena !== '' && $servidor !== '') {
+        $mailer->isSMTP();
+        $mailer->Host = $servidor;
+        $mailer->SMTPAuth = true;
+        $mailer->Username = $cuenta;
+        $mailer->Password = $contrasena;
+        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mailer->Port = (int) $puerto;
+    } else {
+        $mailer->isMail();
     }
 
-    $graphUrl = 'https://graph.microsoft.com/v1.0/users/'
-        . rawurlencode($config['email_remitente'])
-        . '/sendMail';
-
-    $payload = json_encode([
-        'message' => [
-            'subject' => 'Nuevo mensaje de contacto desde el sitio web',
-            'body' => [
-                'contentType' => 'HTML',
-                'content' => '<!DOCTYPE html>'
-                    . '<html lang="es"><head><meta charset="UTF-8"></head>'
-                    . '<body style="margin:0;padding:0;background-color:#f3f4f6;'
-                    . 'font-family:Arial,Helvetica,sans-serif;color:#1f2937;">'
-                    . '<table role="presentation" cellpadding="0" cellspacing="0" border="0"'
-                    . ' width="100%" bgcolor="#f3f4f6"><tr><td align="center"'
-                    . ' style="padding:24px 12px;">'
-                    . '<table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"'
-                    . ' width="600" style="width:100%;max-width:600px;background-color:#ffffff;'
-                    . 'border:1px solid #e5e7eb;border-top:5px solid #087b94;border-radius:8px;">'
-                    . '<tr><td style="padding:24px 32px 20px;border-bottom:1px solid #e5e7eb;">'
-                    . '<img src="cid:sbcTransportLogo" width="210" alt="SMARTT - Transporte de carga pesada"'
-                    . ' style="display:block;width:210px;max-width:100%;height:auto;border:0;margin:0 0 20px;">'
-                    . '<p style="margin:0 0 8px;color:#087b94;font-size:12px;font-weight:bold;'
-                    . 'letter-spacing:1px;text-transform:uppercase;">Formulario de contacto</p>'
-                    . '<h1 style="margin:0;font-size:22px;line-height:1.4;color:#111827;">'
-                    . 'Nuevo mensaje recibido</h1>'
-                    . '<p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6b7280;">'
-                    . 'Se ha recibido una nueva consulta desde el sitio web.</p>'
-                    . '</td></tr>'
-                    . '<tr><td style="padding:24px 32px;">'
-                    . '<table role="presentation" cellpadding="0" cellspacing="0" border="0"'
-                    . ' width="100%" style="font-size:14px;line-height:1.6;">'
-                    . '<tr><td style="padding:0 0 16px;color:#6b7280;width:100px;'
-                    . 'vertical-align:top;">Nombre</td><td style="padding:0 0 16px;color:#111827;'
-                    . 'font-weight:bold;vertical-align:top;">' . $nombreHtml . '</td></tr>'
-                    . '<tr><td style="padding:0 0 16px;color:#6b7280;vertical-align:top;">'
-                    . 'Correo</td><td style="padding:0 0 16px;vertical-align:top;"><a href="mailto:'
-                    . $correoHtml . '" style="color:#087b94;text-decoration:underline;">'
-                    . $correoHtml . '</a></td></tr>'
-                    . '</table>'
-                    . '<p style="margin:8px 0 8px;color:#6b7280;font-size:14px;">Mensaje</p>'
-                    . '<div style="padding:16px;background-color:#f9fafb;border-left:3px solid #8dbb3f;'
-                    . 'border-radius:4px;font-size:14px;line-height:1.7;color:#111827;">'
-                    . $mensajeHtml . '</div>'
-                    . '<p style="margin:24px 0 0;font-size:13px;line-height:1.6;color:#6b7280;">'
-                    . 'Puedes responder directamente a este correo para contactar a '
-                    . $nombreHtml . '.</p>'
-                    . '</td></tr>'
-                    . '<tr><td style="padding:16px 32px;background-color:#f9fafb;'
-                    . 'border-top:1px solid #e5e7eb;font-size:12px;color:#9ca3af;">'
-                    . 'Notificación automática del formulario de contacto.</td></tr>'
-                    . '</table></td></tr></table></body></html>',
-            ],
-            'attachments' => [[
-                '@odata.type' => '#microsoft.graph.fileAttachment',
-                'name' => 'SBC_TRANSPORT.png',
-                'contentType' => 'image/png',
-                'contentBytes' => base64_encode($logoBytes),
-                'isInline' => true,
-                'contentId' => 'sbcTransportLogo',
-            ]],
-            'toRecipients' => [[
-                'emailAddress' => ['address' => $config['email_destino']],
-            ]],
-            'replyTo' => [[
-                'emailAddress' => [
-                    'address' => $correo,
-                    'name' => $nombre,
-                ],
-            ]],
-        ],
-        'saveToSentItems' => true,
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
-    if ($payload === false) {
-        throw new RuntimeException('No se pudo preparar el mensaje para Microsoft Graph.');
+    $mailer->CharSet = PHPMailer::CHARSET_UTF8;
+    $mailer->setFrom($cuenta, 'SMARTT | Contacto');
+    $mailer->addAddress($cuenta);
+    $mailer->addReplyTo($correo, $nombre);
+    if (!$mailer->addEmbeddedImage($logoPath, 'sbcTransportLogo', 'SBC_TRANSPORT.png')) {
+        throw new RuntimeException('No se pudo adjuntar el logotipo al correo de contacto.');
     }
 
-    $sendResponse = solicitarHttp(
-        $graphUrl,
-        [
-            'Authorization: Bearer ' . $tokenData['access_token'],
-            'Content-Type: application/json',
-        ],
-        $payload
-    );
+    $mailer->isHTML(true);
+    $fechaRecepcion = date('d/m/Y H:i:s');
+    $mailer->Subject = 'Nuevo mensaje de contacto | SMARTT';
+    $mailer->Body = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"></head>'
+        . '<body style="margin:0;padding:32px 16px;background-color:#eef3f6;font-family:Arial,Helvetica,sans-serif;color:#10384d;">'
+        . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">'
+        . '<tr><td align="center">'
+        . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:700px;background:#ffffff;border:1px solid #dfe7eb;border-radius:12px;overflow:hidden;">'
+        . '<tr><td style="padding:26px 28px 10px;background:#ffffff;border-bottom:3px solid #0e8ca6;">'
+        . '<img src="cid:sbcTransportLogo" width="240" alt="SMARTT" style="display:block;max-width:240px;height:auto;">'
+        . '</td></tr>'
+        . '<tr><td style="padding:32px 28px 8px;">'
+        . '<div style="font-size:12px;letter-spacing:1.5px;color:#0e8ca6;font-weight:700;text-transform:uppercase;">Contacto web</div>'
+        . '<h2 style="margin:10px 0 8px;font-size:32px;line-height:1.2;color:#0f172a;">Nuevo mensaje recibido</h2>'
+        . '<p style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#475569;">Se ha registrado una nueva consulta desde el sitio web de SMARTT.</p>'
+        . '</td></tr>'
+        . '<tr><td style="padding:0 28px 18px;">'
+        . '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:separate;border-spacing:0;">'
+        . '<tr><td style="padding:12px 0;border-bottom:1px solid #edf2f7;font-size:15px;color:#334155;"><strong style="display:inline-block;width:140px;color:#0f172a;">Nombre:</strong> ' . $nombreHtml . '</td></tr>'
+        . '<tr><td style="padding:12px 0;border-bottom:1px solid #edf2f7;font-size:15px;color:#334155;"><strong style="display:inline-block;width:140px;color:#0f172a;">Correo:</strong> ' . $correoHtml . '</td></tr>'
+        . '<tr><td style="padding:12px 0;border-bottom:1px solid #edf2f7;font-size:15px;color:#334155;"><strong style="display:inline-block;width:140px;color:#0f172a;">Fecha:</strong> ' . $fechaRecepcion . '</td></tr>'
+        . '<tr><td style="padding:12px 0 6px;font-size:15px;color:#334155;"><strong style="display:block;margin-bottom:8px;color:#0f172a;">Mensaje:</strong>'
+        . '<div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0e8ca6;border-radius:8px;padding:16px 18px;line-height:1.7;white-space:normal;">' . $mensajeHtml . '</div>'
+        . '</td></tr>'
+        . '</table>'
+        . '</td></tr>'
+        . '<tr><td style="padding:24px 28px 30px;">'
+        . '<p style="margin:0;font-size:13px;line-height:1.6;color:#64748b;">Por favor responder a este correo utilizando la dirección del remitente.</p>'
+        . '</td></tr>'
+        . '</table>'
+        . '</td></tr>'
+        . '</table>'
+        . '</body></html>';
+    $mailer->AltBody = "Nuevo mensaje recibido\n\n"
+        . 'Nombre: ' . $nombre . "\n"
+        . 'Correo: ' . $correo . "\n"
+        . 'Fecha: ' . $fechaRecepcion . "\n\n"
+        . "Mensaje:\n" . $mensaje;
 
-    if ($sendResponse['status'] !== 202) {
-        throw new RuntimeException(
-            'Microsoft Graph no aceptó el correo. Código HTTP '
-            . $sendResponse['status'] . '. Respuesta: ' . $sendResponse['body']
-        );
-    }
-}
-
-/**
- * Ejecuta una solicitud HTTP POST y devuelve el código y el cuerpo recibidos.
- */
-function solicitarHttp($url, array $headers, $body)
-{
-    $curl = curl_init($url);
-    if ($curl === false) {
-        throw new RuntimeException('No se pudo iniciar una solicitud HTTP.');
-    }
-
-    curl_setopt_array($curl, [
-        CURLOPT_POST => true,
-        CURLOPT_HTTPHEADER => $headers,
-        CURLOPT_POSTFIELDS => $body,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_CONNECTTIMEOUT => 10,
-        CURLOPT_TIMEOUT => 30,
-    ]);
-
-    $responseBody = curl_exec($curl);
-    $curlError = curl_error($curl);
-    $status = (int) curl_getinfo($curl, CURLINFO_HTTP_CODE);
-    curl_close($curl);
-
-    if ($responseBody === false) {
-        throw new RuntimeException('Falló la solicitud a Microsoft: ' . $curlError);
-    }
-
-    return [
-        'status' => $status,
-        'body' => $responseBody,
-    ];
+    $mailer->send();
 }

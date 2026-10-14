@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Validar PHP contact form",
+			"type": "shell",
+			"command": "php -l \"C:/xampp/htdocs/SBC_TRANSPORT_SAC_HTML/Creando_un_formulario_de_Contacto/php/send.php\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validar PHP contact form files",
+			"type": "shell",
+			"command": "php -l \"C:/xampp/htdocs/SBC_TRANSPORT_SAC_HTML/Creando_un_formulario_de_Contacto/contactenos.php\" && php -l \"C:/xampp/htdocs/SBC_TRANSPORT_SAC_HTML/Creando_un_formulario_de_Contacto/php/contactenos_view.php\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validar PHP send template",
+			"type": "shell",
+			"command": "php -l \"C:/xampp/htdocs/SBC_TRANSPORT_SAC_HTML/Creando_un_formulario_de_Contacto/php/send.php\"",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
