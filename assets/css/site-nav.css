@@ -210,16 +210,17 @@
   display: block;
   padding: 15px 24px;
   color: #006d88;
-  background: #e5f1f4;
+  background: rgb(255 255 255 / 88%);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.4;
   text-decoration: none;
+  backdrop-filter: blur(8px);
   transition: background-color 160ms ease;
 }
 
 .site-nav-dropdown-menu a:hover {
-  background: #d8eaf0;
+  background: rgb(255 255 255 / 97%);
 }
 
 .site-nav-toggle {
@@ -337,13 +338,13 @@
 
   .site-nav-dropdown-menu a {
     padding: 12px 14px 12px 24px;
-    background: #e5f1f4;
+    background: rgb(255 255 255 / 88%);
     border-bottom: 1px solid #e5edef;
     box-shadow: none;
     font-size: 0.88rem;
   }
 
   .site-nav-dropdown-menu a:hover {
-    background: #d8eaf0;
+    background: rgb(255 255 255 / 97%);
   }
 }

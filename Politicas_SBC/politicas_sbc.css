@@ -1,18 +1,23 @@
 .social-hero,
 .ethics-hero,
 .security-hero {
-  min-height: 390px;
-  text-align: center;
+  min-height: clamp(390px, 35vw, 510px);
+  align-items: center;
+  text-align: left;
   background:
-    linear-gradient(90deg, rgb(0 43 57 / 55%), rgb(0 76 92 / 27%)),
-    url("../images/hero/camion-smartt-4.jpg") center 54% / cover;
+    linear-gradient(90deg, rgb(0 43 57 / 58%), rgb(0 76 92 / 30%)),
+    url("../images/hero/camion-smartt-4.jpg") center 54% / cover no-repeat;
 }
 
 .social-hero-content,
 .ethics-hero-content,
 .security-hero-content {
   width: min(100% - 40px, 1160px);
-  padding: 64px 0;
+  padding: 44px 0;
+}
+
+.social-hero::after {
+  content: none;
 }
 
 .social-eyebrow:not(.social-eyebrow-dark),
@@ -32,7 +37,7 @@
 .ethics-hero h1,
 .security-hero h1 {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0;
   font-size: clamp(2.25rem, 5.5vw, 4.8rem);
   line-height: 1.12;
 }
@@ -42,13 +47,13 @@
 .security-hero-rule {
   width: 54px;
   height: 3px;
-  margin: 26px auto 0;
+  margin: 26px 0 0;
 }
 
 .social-breadcrumb,
 .ethics-breadcrumb,
 .security-breadcrumb {
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -62,7 +67,7 @@
   .social-hero,
   .ethics-hero,
   .security-hero {
-    min-height: 330px;
+    min-height: 340px;
     background-position: 58% center;
   }
 }
@@ -71,7 +76,7 @@
   .social-hero,
   .ethics-hero,
   .security-hero {
-    min-height: 310px;
+    min-height: 330px;
   }
 
   .social-hero-content,

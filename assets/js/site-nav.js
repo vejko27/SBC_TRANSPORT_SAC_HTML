@@ -99,7 +99,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = `${url("assets/css/site-nav.css")}?v=9`;
+  stylesheet.href = `${url("assets/css/site-nav.css")}?v=10`;
   document.head.appendChild(stylesheet);
 
   document
