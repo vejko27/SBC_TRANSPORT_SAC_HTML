@@ -29,25 +29,25 @@
   header.innerHTML = `
     <div class="site-nav-topbar">
       <div class="site-nav-topbar-inner">
-        <a class="site-nav-email" href="mailto:transportes@gruposbc.com.pe">
+        <div class="site-nav-email">
           <span class="site-nav-email-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" focusable="false"><path d="M3 5h18v14H3V5Zm1.8 1.5L12 12l7.2-5.5H4.8ZM19.5 17V8.4l-7.1 5.4a.7.7 0 0 1-.8 0L4.5 8.4V17h15Z"/></svg>
           </span>
           <span>transportes@gruposbc.com.pe</span>
-        </a>
+        </div>
         <div class="site-nav-phones">
-          <a href="tel:+51936804211">
+          <div>
             <span class="smartt-phone-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.5 17.5 0 0 1 2.9 4.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1l-2.2 2.2Z"/></svg>
             </span>
             <span>Móvil: +51 936 804 211</span>
-          </a>
-          <a href="tel:+5117540464">
+          </div>
+          <div>
             <span class="smartt-phone-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1A17.5 17.5 0 0 1 2.9 4.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1l-2.2 2.2Z"/></svg>
             </span>
             <span>Fijo: 01-7540464</span>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = `${url("assets/css/site-nav.css")}?v=10`;
+  stylesheet.href = `${url("assets/css/site-nav.css")}?v=11`;
   document.head.appendChild(stylesheet);
 
   document
