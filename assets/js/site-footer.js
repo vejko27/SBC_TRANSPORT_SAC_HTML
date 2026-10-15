@@ -91,7 +91,7 @@
     </div>
     <div class="site-footer-bottom">
       <p class="site-footer-copyright">
-        SBC TRANSPORT SAC | © 2024 Todos los derechos reservados.
+        SBC TRANSPORT SAC | © ${new Date().getFullYear()} Todos los derechos reservados.
       </p>
     </div>
   `;
