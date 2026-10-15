@@ -1,0 +1,232 @@
+:root {
+  --security-teal: #006d88;
+  --security-yellow: #efbb0c;
+  --security-ink: #20343d;
+  --security-muted: #5f7078;
+  --security-line: #d3d7d9;
+}
+
+body {
+  margin: 0;
+  color: var(--security-ink);
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.security-hero {
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgb(0 43 57 / 48%), rgb(0 76 92 / 25%)),
+    url("../images/hero/camion-smartt-4.jpg") center 54% / cover;
+}
+
+.security-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 40px, 1200px);
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.security-eyebrow {
+  margin: 0 0 12px;
+  color: var(--security-yellow);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.security-hero h1 {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: clamp(2.25rem, 5.5vw, 4.8rem);
+  line-height: 1.12;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 32%);
+}
+
+.security-hero-rule {
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin: 27px auto 0;
+  background: var(--security-yellow);
+}
+
+.security-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 20px;
+  color: rgb(255 255 255 / 90%);
+  font-size: 0.9rem;
+}
+
+.security-breadcrumb a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.security-breadcrumb a:hover {
+  color: var(--security-yellow);
+}
+
+.security-breadcrumb > span:nth-child(2) {
+  color: var(--security-yellow);
+  font-size: 1.2rem;
+}
+
+.security-content {
+  width: min(100% - 40px, 1200px);
+  margin: 0 auto;
+  padding: 52px 0 84px;
+}
+
+.security-intro {
+  margin: 0 0 36px;
+}
+
+.security-eyebrow-dark {
+  margin-bottom: 8px;
+  color: var(--security-teal);
+}
+
+.security-intro h2 {
+  margin: 0 0 14px;
+  color: var(--security-ink);
+  font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.security-intro > p:not(.security-eyebrow) {
+  max-width: 1080px;
+  margin: 0;
+  color: var(--security-muted);
+  font-size: 1rem;
+}
+
+.security-commitments {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.security-commitment {
+  display: grid;
+  grid-template-columns: 48px minmax(175px, 0.8fr) minmax(0, 2fr);
+  align-items: start;
+  column-gap: 20px;
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--security-line);
+}
+
+.security-commitment:first-child {
+  border-top: 1px solid var(--security-line);
+}
+
+.security-number {
+  color: #58666c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.security-commitment h3 {
+  margin: 3px 0 0;
+  color: #263b44;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.security-commitment p {
+  margin: 0;
+  color: var(--security-muted);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .security-hero {
+    min-height: 330px;
+    background-position: 58% center;
+  }
+
+  .security-content {
+    padding: 40px 0 64px;
+  }
+
+  .security-commitment {
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: 14px;
+    row-gap: 7px;
+    padding: 19px 8px;
+  }
+
+  .security-number {
+    grid-row: 1 / span 2;
+    font-size: 1.75rem;
+  }
+
+  .security-commitment h3 {
+    margin-top: 2px;
+  }
+
+  .security-commitment p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .security-hero-content,
+  .security-content {
+    width: min(100% - 32px, 520px);
+  }
+
+  .security-hero {
+    min-height: 310px;
+  }
+
+  .security-hero-content {
+    padding: 48px 0;
+  }
+
+  .security-breadcrumb {
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+
+  .security-intro {
+    margin-bottom: 26px;
+  }
+
+  .security-commitment {
+    grid-template-columns: 34px minmax(0, 1fr);
+    column-gap: 11px;
+    padding: 17px 2px;
+  }
+
+  .security-number {
+    font-size: 1.55rem;
+  }
+
+  .security-commitment h3 {
+    font-size: 0.95rem;
+  }
+
+  .security-commitment p {
+    font-size: 0.9rem;
+  }
+}

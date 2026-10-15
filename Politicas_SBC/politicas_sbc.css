@@ -1,0 +1,89 @@
+.social-hero,
+.ethics-hero,
+.security-hero {
+  min-height: 390px;
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgb(0 43 57 / 55%), rgb(0 76 92 / 27%)),
+    url("../images/hero/camion-smartt-4.jpg") center 54% / cover;
+}
+
+.social-hero-content,
+.ethics-hero-content,
+.security-hero-content {
+  width: min(100% - 40px, 1160px);
+  padding: 64px 0;
+}
+
+.social-eyebrow:not(.social-eyebrow-dark),
+.ethics-eyebrow:not(.ethics-eyebrow-dark),
+.security-eyebrow:not(.security-eyebrow-dark) {
+  margin: 0 0 12px;
+  color: #efbb0c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.social-hero h1,
+.ethics-hero h1,
+.security-hero h1 {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: clamp(2.25rem, 5.5vw, 4.8rem);
+  line-height: 1.12;
+}
+
+.social-hero-rule,
+.ethics-hero-rule,
+.security-hero-rule {
+  width: 54px;
+  height: 3px;
+  margin: 26px auto 0;
+}
+
+.social-breadcrumb,
+.ethics-breadcrumb,
+.security-breadcrumb {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-content,
+.ethics-content,
+.security-content {
+  width: min(100% - 40px, 1120px);
+}
+
+@media (max-width: 760px) {
+  .social-hero,
+  .ethics-hero,
+  .security-hero {
+    min-height: 330px;
+    background-position: 58% center;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-hero,
+  .ethics-hero,
+  .security-hero {
+    min-height: 310px;
+  }
+
+  .social-hero-content,
+  .ethics-hero-content,
+  .security-hero-content {
+    width: min(100% - 32px, 520px);
+    padding: 48px 0;
+  }
+
+  .social-content,
+  .ethics-content,
+  .security-content {
+    width: min(100% - 32px, 520px);
+  }
+}

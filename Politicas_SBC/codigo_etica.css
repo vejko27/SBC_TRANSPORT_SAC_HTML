@@ -1,0 +1,239 @@
+:root {
+  --ethics-teal: #006d88;
+  --ethics-teal-dark: #00576e;
+  --ethics-yellow: #efbb0c;
+  --ethics-ink: #33434a;
+  --ethics-muted: #66767d;
+  --ethics-line: #d7dde0;
+}
+
+body {
+  margin: 0;
+  color: var(--ethics-ink);
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.ethics-hero {
+  position: relative;
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(90deg, rgb(0 40 53 / 60%), rgb(0 79 98 / 24%)),
+    url("../images/hero/camion-smartt-4.jpg") center 54% / cover;
+}
+
+.ethics-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 40px, 1160px);
+  margin: 0 auto;
+  padding: 66px 0;
+}
+
+.ethics-eyebrow {
+  margin: 0 0 12px;
+  color: var(--ethics-yellow);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.ethics-hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.35rem, 5.8vw, 4.5rem);
+  line-height: 1.1;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 24%);
+}
+
+.ethics-hero-rule {
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-top: 25px;
+  background: var(--ethics-yellow);
+}
+
+.ethics-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 19px;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.9rem;
+}
+
+.ethics-breadcrumb a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.ethics-breadcrumb a:hover {
+  color: var(--ethics-yellow);
+}
+
+.ethics-breadcrumb > span:nth-child(2) {
+  color: var(--ethics-yellow);
+  font-size: 1.2rem;
+}
+
+.ethics-content {
+  width: min(100% - 40px, 1120px);
+  margin: 0 auto;
+  padding: 48px 0 88px;
+}
+
+.ethics-intro {
+  margin: 0 0 34px;
+}
+
+.ethics-eyebrow-dark {
+  margin-bottom: 8px;
+  color: var(--ethics-teal);
+}
+
+.ethics-intro h2 {
+  margin: 0 0 18px;
+  color: var(--ethics-ink);
+  font-size: clamp(1.7rem, 3.3vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.ethics-intro > p:not(.ethics-eyebrow) {
+  margin: 12px 0 0;
+  color: var(--ethics-muted);
+  font-size: 0.98rem;
+}
+
+.ethics-intro .ethics-hint {
+  margin-top: 22px;
+  color: var(--ethics-teal);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.ethics-accordion {
+  border-top: 1px solid var(--ethics-line);
+}
+
+.ethics-item {
+  border-bottom: 1px solid var(--ethics-line);
+}
+
+.ethics-item summary {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  color: #46545a;
+  cursor: pointer;
+  font-size: 0.91rem;
+  font-weight: 700;
+  line-height: 1.45;
+  list-style: none;
+  text-transform: uppercase;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.ethics-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ethics-item summary::before {
+  width: 0;
+  height: 0;
+  flex: 0 0 auto;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid var(--ethics-teal);
+  content: "";
+  transition: transform 160ms ease;
+}
+
+.ethics-item[open] summary {
+  color: var(--ethics-teal-dark);
+  background: #f3f7f8;
+}
+
+.ethics-item[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.ethics-item summary:hover {
+  color: var(--ethics-teal);
+  background: #f7f9fa;
+}
+
+.ethics-item summary:focus-visible {
+  outline: 3px solid var(--ethics-yellow);
+  outline-offset: 2px;
+}
+
+.ethics-number {
+  flex: 0 0 auto;
+}
+
+.ethics-item-content {
+  padding: 4px 30px 18px;
+  color: var(--ethics-muted);
+  font-size: 0.96rem;
+}
+
+.ethics-item-content p {
+  margin: 8px 0;
+}
+
+.ethics-item-content ul {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+  padding-left: 22px;
+}
+
+.ethics-item-content li::marker {
+  color: var(--ethics-teal);
+}
+
+@media (max-width: 640px) {
+  .ethics-hero {
+    min-height: 320px;
+    background-position: 58% center;
+  }
+
+  .ethics-hero-content,
+  .ethics-content {
+    width: min(100% - 32px, 520px);
+  }
+
+  .ethics-hero-content {
+    padding: 52px 0;
+  }
+
+  .ethics-content {
+    padding: 38px 0 64px;
+  }
+
+  .ethics-item summary {
+    padding: 11px 8px;
+    font-size: 0.85rem;
+  }
+
+  .ethics-item-content {
+    padding: 4px 22px 16px;
+    font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ethics-item summary,
+  .ethics-item summary::before {
+    transition: none;
+  }
+}

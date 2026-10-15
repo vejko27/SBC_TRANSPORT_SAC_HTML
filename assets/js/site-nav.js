@@ -7,8 +7,17 @@
   const siteRoot = new URL("../../", script.src);
   const url = (path) => new URL(path, siteRoot).href;
   const pathname = window.location.pathname.toLowerCase();
-  const activePage = pathname.includes("/nosotros/")
-    ? "nosotros"
+  const isSocialPolicy = pathname.endsWith("/politicas_sbc/responsabilidad_social_sbc.html");
+  const isEthicsCode = pathname.endsWith("/politicas_sbc/codigo_de_etica_y_conducta.html");
+  const isSecurityPolicy = pathname.endsWith("/politicas_sbc/politica_de_gestion_de_control_y_seguridad.html");
+  const activePage = isSecurityPolicy
+    ? "gestion-seguridad"
+    : isEthicsCode
+      ? "codigo-etica"
+    : isSocialPolicy
+      ? "responsabilidad-social"
+    : pathname.includes("/nosotros/")
+      ? "nosotros"
     : pathname.endsWith("/contactenos.html")
       ? "contacto"
       : pathname.includes("/libro_de_reclamaciones/")
@@ -60,7 +69,21 @@
         <div class="site-nav-links" id="site-nav-links">
           <a href="${url("index.html")}" data-page="inicio">Inicio</a>
           <a href="${url("contactenos.html")}" data-page="contacto">Contáctenos</a>
-          <a href="${url("Nosotros/nosotros.html")}" data-page="nosotros">Nosotros</a>
+          <div class="site-nav-dropdown" id="site-nav-dropdown">
+            <a href="${url("Nosotros/nosotros.html")}" data-page="nosotros">Nosotros</a>
+            <button
+              class="site-nav-submenu-toggle"
+              type="button"
+              aria-label="Mostrar páginas de Nosotros"
+              aria-controls="site-nav-submenu"
+              aria-expanded="false"
+            ><span aria-hidden="true"></span></button>
+            <div class="site-nav-dropdown-menu" id="site-nav-submenu">
+              <a href="${url("Politicas_SBC/responsabilidad_social_sbc.html")}" data-page="responsabilidad-social">Responsabilidad Social</a>
+              <a href="${url("Politicas_SBC/Codigo_de_Etica_y_Conducta.html")}" data-page="codigo-etica">Código de Ética y Conducta</a>
+              <a href="${url("Politicas_SBC/Politica_de_Gestion_de_Control_y_Seguridad.html")}" data-page="gestion-seguridad">Política BASC de Gestión en Control y Seguridad</a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -70,10 +93,13 @@
   if (activeLink) {
     activeLink.setAttribute("aria-current", "page");
   }
+  if (isSocialPolicy || isEthicsCode || isSecurityPolicy) {
+    header.querySelector(".site-nav-dropdown").classList.add("is-active");
+  }
 
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
-  stylesheet.href = `${url("assets/css/site-nav.css")}?v=4`;
+  stylesheet.href = `${url("assets/css/site-nav.css")}?v=9`;
   document.head.appendChild(stylesheet);
 
   document
@@ -83,6 +109,8 @@
 
   const toggle = header.querySelector("#site-nav-toggle");
   const links = header.querySelector("#site-nav-links");
+  const dropdown = header.querySelector("#site-nav-dropdown");
+  const submenuToggle = header.querySelector(".site-nav-submenu-toggle");
 
   toggle.addEventListener("click", function () {
     const isExpanded = toggle.getAttribute("aria-expanded") === "true";
@@ -91,7 +119,25 @@
     links.classList.toggle("is-open", !isExpanded);
   });
 
+  submenuToggle.addEventListener("click", function () {
+    const isExpanded = submenuToggle.getAttribute("aria-expanded") === "true";
+    submenuToggle.setAttribute("aria-expanded", String(!isExpanded));
+    submenuToggle.setAttribute(
+      "aria-label",
+      isExpanded ? "Mostrar páginas de Nosotros" : "Ocultar páginas de Nosotros"
+    );
+    dropdown.classList.toggle("is-open", !isExpanded);
+  });
+
   document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && submenuToggle.getAttribute("aria-expanded") === "true") {
+      submenuToggle.setAttribute("aria-expanded", "false");
+      submenuToggle.setAttribute("aria-label", "Mostrar páginas de Nosotros");
+      dropdown.classList.remove("is-open");
+      submenuToggle.focus();
+      return;
+    }
+
     if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Abrir menú");
