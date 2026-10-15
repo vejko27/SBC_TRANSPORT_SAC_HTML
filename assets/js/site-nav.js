@@ -81,7 +81,7 @@
             <div class="site-nav-dropdown-menu" id="site-nav-submenu">
               <a href="${url("Politicas_SBC/responsabilidad_social_sbc.html")}" data-page="responsabilidad-social">Responsabilidad Social</a>
               <a href="${url("Politicas_SBC/Codigo_de_Etica_y_Conducta.html")}" data-page="codigo-etica">Código de Ética y Conducta</a>
-              <a href="${url("Politicas_SBC/Politica_de_Gestion_de_Control_y_Seguridad.html")}" data-page="gestion-seguridad">Política BASC de Gestión en Control y Seguridad</a>
+              <a href="${url("Politicas_SBC/Politica_de_Gestion_de_Control_y_Seguridad.html")}" data-page="gestion-seguridad">Política de Gestión en Control y Seguridad</a>
             </div>
           </div>
         </div>
