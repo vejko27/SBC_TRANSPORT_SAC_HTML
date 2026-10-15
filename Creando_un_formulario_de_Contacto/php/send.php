@@ -1,7 +1,7 @@
 <?php
 
-// // Configuración SMTP Microsoft 365
-// require_once '/home/smartbusinessper/Vcanova/correos.php';
+ // Configuración SMTP Microsoft 365
+require_once '/home/smartbusinessper/Vcanova/correos.php';
 
 
 
