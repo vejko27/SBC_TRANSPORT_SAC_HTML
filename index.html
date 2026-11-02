@@ -1,5 +1,17 @@
 <html lang="es">
   <head>
+    
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N68X799QQD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N68X799QQD');
+</script>
+    
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smartt Transport SAC</title>
@@ -22,7 +34,10 @@
 
       .site-footer-main {
         display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.9fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(
+            0,
+            0.9fr
+          ) minmax(0, 1fr);
         gap: 36px;
         padding: 38px 0 30px;
       }
@@ -126,7 +141,9 @@
         border: 2px solid transparent;
         border-radius: 10px;
         text-decoration: none;
-        transition: transform 180ms ease, border-color 180ms ease;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease;
       }
 
       .complaints-link:hover {
@@ -175,7 +192,10 @@
 
       @media (max-width: 900px) {
         .site-footer-main {
-          grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 1fr);
+          grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(
+              0,
+              1fr
+            );
           gap: 28px;
         }
 
@@ -210,6 +230,9 @@
       }
     </style>
   </head>
+
+ 
+
   <body class="bg-gray-100">
     <!-- Barra de Navegación -->
 
@@ -219,7 +242,7 @@
         <!-- Hero Section with Company Background -->
         <section
           id="hero-carousel"
-          class="hero-section relative flex items-center justify-center overflow-hidden"
+          class="relative flex items-center justify-center overflow-hidden hero-section"
           role="region"
           aria-label="Imágenes de la flota SMARTT"
         >
@@ -228,29 +251,29 @@
             src="./images/hero/banner-sbc-1.jpg"
             alt=""
             aria-hidden="true"
-            class="absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-700"
+            class="absolute inset-0 object-cover object-center w-full h-full transition-opacity duration-700 opacity-100"
           />
           <img
             id="hero-slide-b"
             src="./images/hero/banner-sbc-2.jpg"
             alt=""
             aria-hidden="true"
-            class="absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-700"
+            class="absolute inset-0 object-cover object-center w-full h-full transition-opacity duration-700 opacity-0"
           />
 
-          <div class="relative z-10 flex h-full w-full flex-col">
-            <div
-              class="flex flex-1 flex-col items-center justify-center px-4"
-            >
+          <div class="relative z-10 flex flex-col w-full h-full">
+            <div class="flex flex-col items-center justify-center flex-1 px-4">
               <div
-                class="hero-copy max-w-4xl px-4 py-6 text-center text-white sm:px-10 sm:py-10"
+                class="max-w-4xl px-4 py-6 text-center text-white hero-copy sm:px-10 sm:py-10"
               >
                 <h1
                   class="text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl"
                 >
                   Soluciones de Transporte Confiables
                 </h1>
-                <p class="mx-auto mt-4 max-w-2xl text-sm text-white sm:text-base md:text-lg">
+                <p
+                  class="max-w-2xl mx-auto mt-4 text-sm text-white sm:text-base md:text-lg"
+                >
                   Ofrecemos servicios de transporte seguros y eficientes para
                   satisfacer todas tus necesidades logísticas
                 </p>
@@ -328,14 +351,14 @@
         </section>
 
         <!-- Clients Section -->
-        <section id="clients" class="bg-gray-50 px-4 py-14 sm:py-16">
+        <section id="clients" class="px-4 bg-gray-50 py-14 sm:py-16">
           <div class="container mx-auto">
             <h2
               class="mb-3 text-center text-3xl font-bold text-[#006D88] sm:text-4xl"
             >
               Nuestros Clientes
             </h2>
-            <p class="mb-8 text-center text-sm text-gray-600 sm:text-base">
+            <p class="mb-8 text-sm text-center text-gray-600 sm:text-base">
               Empresas que confían en nuestros servicios de transporte.
             </p>
 
@@ -346,54 +369,112 @@
               >
                 <ul
                   id="clients-carousel"
-                  class="clients-carousel-track flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-5 sm:gap-6"
+                  class="flex gap-4 pb-5 overflow-x-auto clients-carousel-track snap-x snap-mandatory scroll-smooth sm:gap-6"
                   tabindex="0"
                 >
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/dp wo logo.png" alt="Logo de DP World" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/dp wo logo.png"
+                        alt="Logo de DP World"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/fargoline_sa_logo.jpeg" alt="Logo de Fargoline" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/fargoline_sa_logo.jpeg"
+                        alt="Logo de Fargoline"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/itaw logo.png" alt="Logo de ITAW" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/itaw logo.png"
+                        alt="Logo de ITAW"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/logo kline.png" alt="Logo de K Line" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/logo kline.png"
+                        alt="Logo de K Line"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/partner.png" alt="Logo de cliente" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/partner.png"
+                        alt="Logo de cliente"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/schryver.png" alt="Logo de Schryver" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/schryver.png"
+                        alt="Logo de Schryver"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
-                  <li class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]">
-                    <div class="flex h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:h-40">
-                      <img src="./images/clients/Cliente3jfif.jfif" alt="Logo de cliente" class="h-24 w-full object-contain" />
+                  <li
+                    class="w-[78%] flex-none snap-start sm:w-[45%] lg:w-[30%] xl:w-[23%]"
+                  >
+                    <div
+                      class="flex items-center justify-center p-6 transition duration-300 bg-white border border-gray-100 shadow-sm h-36 rounded-xl hover:-translate-y-1 hover:shadow-lg sm:h-40"
+                    >
+                      <img
+                        src="./images/clients/Cliente3jfif.jfif"
+                        alt="Logo de cliente"
+                        class="object-contain w-full h-24"
+                      />
                     </div>
                   </li>
                 </ul>
               </div>
-              <div class="mt-2 flex justify-center gap-3">
+              <div class="flex justify-center gap-3 mt-2">
                 <button
                   id="clients-previous"
                   type="button"
                   aria-label="Ver clientes anteriores"
                   class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-[#006D88] shadow-sm transition hover:bg-[#006D88] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#006D88] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  <span aria-hidden="true" class="text-2xl leading-none">‹</span>
+                  <span aria-hidden="true" class="text-2xl leading-none"
+                    >‹</span
+                  >
                 </button>
                 <button
                   id="clients-next"
@@ -401,7 +482,9 @@
                   aria-label="Ver más clientes"
                   class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-[#006D88] shadow-sm transition hover:bg-[#006D88] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#006D88] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  <span aria-hidden="true" class="text-2xl leading-none">›</span>
+                  <span aria-hidden="true" class="text-2xl leading-none"
+                    >›</span
+                  >
                 </button>
               </div>
             </div>
@@ -422,26 +505,30 @@
             loading="lazy"
           />
           <p class="footer-about-copy">
-            Ofrecemos servicios de transporte seguros y eficientes para atender las necesidades logísticas de tu empresa.
+            Ofrecemos servicios de transporte seguros y eficientes para atender
+            las necesidades logísticas de tu empresa.
           </p>
           <p class="footer-legal-name">SBC TRANSPORT SAC</p>
         </section>
 
-        <div
-          class="footer-services-placeholder"
-          aria-hidden="true"
-        ></div>
+        <div class="footer-services-placeholder" aria-hidden="true"></div>
 
         <section aria-labelledby="footer-quote-title">
-          <h2 id="footer-quote-title" class="footer-column-title">Solicita una cotización</h2>
-          <a class="footer-quote-number" href="tel:+51936804211">+51 936 804 211</a>
+          <h2 id="footer-quote-title" class="footer-column-title">
+            Solicita una cotización
+          </h2>
+          <a class="footer-quote-number" href="tel:+51936804211"
+            >+51 936 804 211</a
+          >
           <p class="footer-quote-copy">
             Llámanos y conversemos sobre el servicio que necesitas.
           </p>
         </section>
 
         <section aria-labelledby="footer-contact-title">
-          <h2 id="footer-contact-title" class="footer-column-title">Información de contacto</h2>
+          <h2 id="footer-contact-title" class="footer-column-title">
+            Información de contacto
+          </h2>
           <ul class="footer-contact-list">
             <li class="footer-contact-item">
               <span class="footer-contact-icon" aria-hidden="true">
@@ -462,7 +549,9 @@
               <span class="footer-contact-icon" aria-hidden="true">
                 <i class="fas fa-envelope"></i>
               </span>
-              <a href="mailto:transportes@gruposbc.com.pe">transportes@gruposbc.com.pe</a>
+              <a href="mailto:transportes@gruposbc.com.pe"
+                >transportes@gruposbc.com.pe</a
+              >
             </li>
           </ul>
           <a
@@ -477,7 +566,10 @@
             />
             <span class="complaints-link-copy">
               <strong>Libro de Reclamaciones</strong>
-              <span>Registra una queja o un reclamo <span aria-hidden="true">→</span></span>
+              <span
+                >Registra una queja o un reclamo
+                <span aria-hidden="true">→</span></span
+              >
             </span>
           </a>
         </section>
@@ -550,7 +642,10 @@
 
           incomingSlide.onload = revealNextImage;
           incomingSlide.onerror = function () {
-            console.error("No se pudo cargar la imagen del banner:", heroImages[nextImage]);
+            console.error(
+              "No se pudo cargar la imagen del banner:",
+              heroImages[nextImage],
+            );
             incomingSlide.onload = null;
             incomingSlide.onerror = null;
             activeHeroImage = nextImage;
@@ -564,7 +659,8 @@
       }
 
       function updateClientsControls() {
-        const maxScroll = clientsCarousel.scrollWidth - clientsCarousel.clientWidth;
+        const maxScroll =
+          clientsCarousel.scrollWidth - clientsCarousel.clientWidth;
         clientsPrevious.disabled = clientsCarousel.scrollLeft <= 0;
         clientsNext.disabled = clientsCarousel.scrollLeft >= maxScroll - 1;
       }
@@ -657,3 +753,5 @@
     <script src="./assets/js/whatsapp-widget.js?v=2"></script>
   </body>
 </html>
+
+
