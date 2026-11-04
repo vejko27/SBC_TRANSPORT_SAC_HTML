@@ -84,6 +84,7 @@
               <a href="${url("Politicas_SBC/Politica_de_Gestion_de_Control_y_Seguridad.html")}" data-page="gestion-seguridad">Política de Gestión en Control y Seguridad</a>
             </div>
           </div>
+          <a href="https://extranet.smartt.com.pe/">Extranet</a>
         </div>
       </div>
     </nav>
